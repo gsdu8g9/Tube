@@ -5,6 +5,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-ui-router": "0.2.7",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "fontawesome": "~4.4.0"
   }
 }

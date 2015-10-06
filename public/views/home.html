@@ -1,34 +1,14 @@
-<div class="head-nav">
-	<div id="inner-head-nav">
-		<div class="logo-section">
-			<a id="logo-container" href="/" title="Hipkid home"> 
-				<span class="logo">{{home.title}}</span>
-			</a>
-			<button class="head-nav-btn" >
-			</button>
-		</div>
-		<div class="user-section">
-			<div class="notification-container"></div>
-			<span>{{home.title}}</span>
-		</div>
-	</div>
+<!-- GLOBAL NAV -->
+<div data-ng-controller="MastheadController">
+    <div ng-include="" src="'views/masthead.html'"></div>
 </div>
-<div class="page-container">
-	<div class="guid-menu">
-		<div class="guid-container"  ng-view="">
-		</div>
-	</div>
-	<div class="nav-bar head-nav">
-		<div class="inner-nav-bar ">
-		</div>
-	</div>
-	<div class="content">
-	test
-	
-	test 2
-	
-	Test 3
-	
-	test 4
-	</div>
+<!--end masthead-->
+<div class="content">
+test
+
+test 2
+
+Test 3
+
+test 4
 </div>
