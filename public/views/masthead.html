@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="pull-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/" title="{{home.title}}">
+                    <a class="navbar-brand" ui-sref="home" title="{{home.title}}">
                         {{home.title}}
                     </a>
                 </div>
@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a  ui-sref="login">
                         <i class="glyphicon glyphicon-user fa-lg"></i>
                     </a>
                 </li>
@@ -40,13 +40,13 @@
                         <div>
                             <ul>
                                 <li>
-                                    <a class="list-group-item" href="#"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
+                                    <a class="list-group-item" ui-sref="home"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
                                 </li>
                                 <li>
-                                    <a class="list-group-item" href="#"><i class="fa fa-user fa-fw"></i>&nbsp; My Channel</a>
+                                    <a class="list-group-item" ui-sref="#"><i class="fa fa-user fa-fw"></i>&nbsp; My Channel</a>
                                 </li>
                                 <li>
-                                    <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw"></i>&nbsp; History</a>
+                                    <a class="list-group-item" ui-sref="history"><i class="glyphicon glyphicon-hourglass fa-fw"></i>&nbsp; History</a>
                                 <li>
                             </ul>
                         </div>
@@ -59,13 +59,19 @@
                             </h3>
                             <ul>
                                 <li>
-                                    <a class="list-group-item" href="#"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
+                                    <a class="list-group-item" ui-sref="home">
+                                        <i class="glyphicon glyphicon-list fa-fw"></i>&nbsp; List 1
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="list-group-item" href="#"><i class="fa fa-user fa-fw"></i>&nbsp; My Channel</a>
+                                    <a class="list-group-item" ui-sref="/" href="#">
+                                        <i class="glyphicon glyphicon-list fa-fw"></i>&nbsp; List 2
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw"></i>&nbsp; History</a>
+                                    <a class="list-group-item" ui-sref="history">
+                                        <i class="glyphicon glyphicon-list fa-fw"></i>&nbsp; List 3
+                                    </a>
                                 <li>
                             </ul>
                         </div>

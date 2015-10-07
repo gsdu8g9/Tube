@@ -6,5 +6,15 @@ var tubeApp = angular.module('tubeApp', ['ui.router'])
             url:'/home',
             templateUrl: '/views/home.html',
             controller: 'HomeController'
+        })
+        .state('history', {
+            url:'/history',
+            templateUrl: '/views/history.html',
+            controller: 'HistoryController'
+        })
+        .state('login', {
+            url:'/login' ,
+            templateUrl:'/views/login.html' ,
+            controller:'LoginController'
         });
 }]);
