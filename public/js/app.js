@@ -16,5 +16,10 @@ var tubeApp = angular.module('tubeApp', ['ui.router'])
             url:'/login' ,
             templateUrl:'/views/login.html' ,
             controller:'LoginController'
+        })
+        .state('register', {
+            url:'/register' ,
+            templateUrl:'/views/register.html',
+            controller:'RegisterController'
         });
 }]);

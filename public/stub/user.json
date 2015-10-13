@@ -1,0 +1,42 @@
+{
+    "userId":"xj9",
+    "username":"sevenof9",
+    "firstname":"john",
+    "lastname":"doe",
+    "subscriptions":[
+        {
+            "name":"fonzy",
+            "id":"xj8"
+        },
+        {
+            "name":"muppets",
+            "id":"xj7"
+        },
+        {
+            "name":"the fonze",
+            "id":"xj6"
+        }
+    ],
+   "playLists":[
+        {
+            "name":"List 1",
+            "id":"1234"
+        },
+        {
+            "name":"List 2",
+            "id":"4321"
+        },
+        {
+            "name":"List 3",
+            "id":"1324"
+        }
+    ],
+    "videos":[
+        {
+            "name":"Intro",
+            "id":"5467",
+            "date":"09/10/2015",
+            "thumbnail":""
+        }
+    ]
+}
