@@ -283,6 +283,165 @@ tubeApp
             {"name": "Zimbabwe", "code": "ZW"}
         ]
 
+
+        /* validation code **/
+        $scope.validateFirstname = function(){
+            var input = document.querySelector("#firstname");
+            var error = document.querySelector("#firstname-help");
+
+            if(input.value === "") {
+                error.classList.remove("hide");
+                error.classList.add("show");
+
+                input.classList.add("error");
+                input.classList.remove("valid");
+            }
+            else {
+                if(validatorService.isAlphaNumeric(input.value)){
+                    error.classList.remove("show");
+                    error.classList.add("hide");
+
+                    input.classList.remove("error");
+                    input.classList.add("valid");
+                }
+                else {
+                    error.classList.remove("hide");
+                    error.classList.add("show");
+
+                    input.classList.add("error");
+                    input.classList.remove("valid");
+                }
+            }
+        };
+
+        $scope.validateLastname = function(){
+            var input = document.querySelector("#lastname");
+            var error = document.querySelector("#lastname-help");
+
+            if(input.value === "") {
+                error.classList.remove("hide");
+                error.classList.add("show");
+
+                input.classList.add("error");
+                input.classList.remove("valid");
+            }
+            else {
+                if(validatorService.isAlphaNumeric(input.value)){
+                    error.classList.remove("show");
+                    error.classList.add("hide");
+
+                    input.classList.remove("error");
+                    input.classList.add("valid");
+                }
+                else {
+                    error.classList.remove("hide");
+                    error.classList.add("show");
+
+                    input.classList.add("error");
+                    input.classList.remove("valid");
+                }
+            }
+        };
+
+        $scope.validateUsername = function(){
+            var input = document.querySelector("#username");
+            var error = document.querySelector("#username-help");
+
+            if(input.value === "") {
+                error.classList.remove("hide");
+                error.classList.add("show");
+
+                input.classList.add("error");
+                input.classList.remove("valid");
+            }
+            else {
+                if(validatorService.isAlphaNumeric(input.value)){
+                    error.classList.remove("show");
+                    error.classList.add("hide");
+
+                    input.classList.remove("error");
+                    input.classList.add("valid");
+                }
+                else {
+                    error.classList.remove("hide");
+                    error.classList.add("show");
+
+                    input.classList.add("error");
+                    input.classList.remove("valid");
+                }
+            }
+        };
+
+        $scope.validatePassword = function(){
+            // check if field is empty.
+            if(true){
+
+            }
+            else {
+
+            }
+        };
+
+        $scope.validatePasswordConfirm = function(){
+            // check if field is empty.
+            if(true){
+
+            }
+            else {
+
+            }
+        };
+
+        $scope.validateGender = function(){
+            // check if field is empty.
+            if(true){
+
+            }
+            else {
+
+            }
+        };
+
+        $scope.validatePhone = function(){
+            // check if field is empty.
+            if(true){
+
+            }
+            else {
+
+            }
+        };
+
+        $scope.validateEmail = function(){
+            // check if field is empty.
+            if(true){
+
+            }
+            else {
+
+            }
+        };
+
+        $scope.validateBirthday = function(){
+            // check if field is empty.
+            if(true){
+
+            }
+            else {
+
+            }
+        };
+
+        $scope.validateLocation = function(){
+            // check if field is empty.
+            if(true){
+
+            }
+            else {
+
+            }
+        };
+
         $scope.register = function(){
           authService.register($scope.registerForm.name, $scope.registerForm.username, $scope.registerForm.age,$scope.registerForm.email, $scope.registerForm.password, $scope.registerForm.confirmPassword)
               .then(function(response){

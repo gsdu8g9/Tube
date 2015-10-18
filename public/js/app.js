@@ -21,5 +21,10 @@ var tubeApp = angular.module('tubeApp', ['ui.router'])
             url:'/register' ,
             templateUrl:'/views/register.html',
             controller:'RegisterController'
+        })
+        .state('watch',{
+            url:'/watch?vid',
+            templateUrl:'/views/watch.html',
+            controller:'WatchController'
         });
 }]);
