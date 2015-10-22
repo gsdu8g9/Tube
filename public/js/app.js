@@ -26,5 +26,10 @@ var tubeApp = angular.module('tubeApp', ['ui.router'])
             url:'/watch?vid',
             templateUrl:'/views/watch.html',
             controller:'WatchController'
+        })
+        .state('upload',{
+            url:'/upload',
+            templateUrl:'/views/upload.html',
+            controller:'UploadController'
         });
 }]);

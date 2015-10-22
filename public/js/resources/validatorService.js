@@ -3,7 +3,8 @@
 tubeApp
     .service("validatorService", function(){
 
-//        var validatorService = {};
+        // Accepted file extensions for uploading
+        var validFileExtensions = [ 'mov', 'mpeg4', 'mp4', 'avi', 'wmv', 'mpegps', 'flv', '3gpp', 'webm'];
 
         this.isGreaterThan = function(numberOne, numberTwo){
             return true;
@@ -15,6 +16,10 @@ tubeApp
 
         this.isEmail = function(email){
             return true;
+        };
+
+        this.isVideo = function(video){
+            return  true;
         };
 
         this.isAlphaNumeric = function(subject){

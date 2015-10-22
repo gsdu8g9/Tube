@@ -1,0 +1,28 @@
+<!-- GLOBAL NAV -->
+<div data-ng-controller="MastheadController">
+    <div ng-include="" src="'views/masthead.html'"></div>
+</div>
+<!--end masthead-->
+<div style="height:900px; margin-top:120px;" class="container">
+    <div class="col-lg-8 col-md-8" style="background-color: #FFFFFF;text-align:center; padding-top:50px; height: 615px;">
+        <div class="alert alert-danger" ng-show="invalidFile" role="alert">This is not a video file</div>
+
+        <a ng-click="getFile($event)">
+            <span class="glyphicon glyphicon-upload fa-lg"></span>
+            <h2>Select files to upload</h2>
+        </a>
+        <input type="file" style="display: none;" id="file"/>
+        <ul>
+            <li ng-repeat="file in selectedFiles">{{file}}</li>
+        </ul>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <div class="col-lg-12" style="background-color: #FFFFFF; height: 300px;margin-bottom: 15px;"></div>
+        <div class="col-lg-12" style="background-color: #FFFFFF; height: 300px;"></div>
+    </div>
+</div>
+<!-- GLOBAL NAV -->
+<div data-ng-controller="FooterController">
+    <div ng-include="" src="'views/footer.html'"></div>
+</div>
+<!--end footer-->
