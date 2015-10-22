@@ -4,26 +4,56 @@
 </div>
 <!--end masthead-->
 <div class="content container">
-    <div class="span12" style="height:400px;padding:18px; border-bottom: 1px solid #e8e8e8;">
+    <div class="span12" style="min-height:400px;padding:18px; border-bottom: 1px solid #e8e8e8;">
         <h4>Recommended</h4>
-        test
-        test 2
-        Test 3
-        test 4
+        <ul class="home-video-list">
+            <li class="home-video-list-item" data-ng-repeat="item in vidList">
+                <a href="#/watch?vid={{item.id}}">
+                    <div class="top-thumb-nail"></div>
+                </a>
+                <div class="bottom-detail-wrapper">
+                    <a href="#/watch?vid={{item.id}}">
+                        <span class="title">{{item.name}}</span>
+                        <span class="stat">by: {{item.owner}}</span>
+                        <span class="stat">{{item.views}} views</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
     </div>
-    <div class="span12" style="height:400px;padding:18px; border-bottom: 1px solid #e8e8e8;">
+    <div class="span12" style="min-height:400px;padding:18px; border-bottom: 1px solid #e8e8e8;">
         <h4>Recently Uploaded</h4>
-        test
-        test 2
-        Test 3
-        test 4
+        <ul class="home-video-list">
+            <li class="home-video-list-item" data-ng-repeat="item in vidList">
+                <a href="#/watch?vid={{item.id}}">
+                    <div class="top-thumb-nail"></div>
+                </a>
+                <div class="bottom-detail-wrapper">
+                    <a href="#/watch?vid={{item.id}}">
+                        <span class="title">{{item.name}}</span>
+                        <span class="stat">by: {{item.owner}}</span>
+                        <span class="stat">{{item.views}} views</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
     </div>
-    <div class="span12" style="height:400px;padding:18px; border-bottom: 1px solid #e8e8e8;">
+    <div class="span12" style="min-height:400px;padding:18px; border-bottom: 1px solid #e8e8e8;">
         <h4>Top Videos</h4>
-        test
-        test 2
-        Test 3
-        test 4
+        <ul class="home-video-list">
+            <li class="home-video-list-item" data-ng-repeat="item in vidList">
+                <a href="#/watch?vid={{item.id}}">
+                    <div class="top-thumb-nail"></div>
+                </a>
+                <div class="bottom-detail-wrapper">
+                    <a href="#/watch?vid={{item.id}}">
+                        <span class="title">{{item.name}}</span>
+                        <span class="stat">by: {{item.owner}}</span>
+                        <span class="stat">{{item.views}} views</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
     </div>
     <div class="row" style="padding:18px;text-align: center;">
         <button class="btn btn-default btn-sm">Load More</button>

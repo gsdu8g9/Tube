@@ -219,6 +219,7 @@
         margin-left: 133px;
     }
 
+
     .side-videos {
         background: #FFFFFF;
         /*height:900px;*/
@@ -260,13 +261,75 @@
         height:68px;
     }
 
+    /*********************/
+    .home-video-list{
+        list-style: none;
+        padding:0px;
+        margin:0px;
+    }
+    .home-video-list .title,
+    .home-video-list .stat {
+        line-height: 1.4;
+        display: block;
+    }
+    .home-video-list .title {
+        max-height: 2.4em;
+        margin-bottom: 2px;
+        line-height: 1.2;
+        font-size: 13px;
+        font-weight: 500;
+        color:#FF0000;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    .home-video-list .stat {
+        color:#767676;
+        font-size: 11px;
+    }
+    .home-video-list-item {
+        padding:0px;
+        margin:15px;
+        background:#FFFFFF;
+        display: inline-block;
+        height:110px;
+        width:160px;
+    }
+    .home-video-list-item .detail-wrapper a {
+        padding:0px;
+        height:68px;
+        text-decoration: none;
+    }
+    .home-video-list-item .top-thumb-nail {
+        top:0;
+        width:180px;
+        height:136px;
+        background-color:#000;
+        margin:0 5px 0 0;
+    }
+    .bottom-detail-wrapper{
+        margin-top:10px;
+        margin-bottom:10px;
+        display:block;
+        width:120px;
+        margin-left: none;
+    }
+    /*************************************/
     .video-list-item .detail-wrapper a {
         padding:0px;
         height:68px;
         text-decoration: none;
     }
+
     .video-list-item .thumb-nail {
         position: absolute;
+        top:0;
+        width:120px;
+        height:68px;
+        background-color:#000;
+        margin:0 5px 0 0;
+    }
+    .video-list-item .top-thumb-nail {
+        display: block;
         top:0;
         width:120px;
         height:68px;
