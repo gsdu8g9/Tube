@@ -2,8 +2,6 @@
 
 tubeApp
     .controller("WatchController", ['$rootScope', '$scope', '$state', '$stateParams', 'videoService', function($rootScope, $scope, $state, $stateParams, videoService) {
-        $scope.home = {};
-        $scope.home.title = "HipKid";
 
         $scope.viewVideo = $stateParams.vid;
         $scope.activeVid = null;

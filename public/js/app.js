@@ -31,5 +31,11 @@ var tubeApp = angular.module('tubeApp', ['ui.router'])
             url:'/upload',
             templateUrl:'/views/upload.html',
             controller:'UploadController'
+        })
+        .state('myprofile',{
+            url:'/myprofile',
+            templateUrl: '/views/myprofile.html',
+            controller:'MyProfileController'
         });
+
 }]);

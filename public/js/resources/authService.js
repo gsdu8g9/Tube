@@ -37,10 +37,8 @@ tubeApp.service("authService", ["$http", "$q", "sessionService", function($http,
         this.logOut = function(){
             var result = $q.defer();
 
-            $http({
-                method:"GET",
-                url: "/account/logout"
-            }).success(function(response){
+            $http.post("/account/logout")
+                .success(function(response){
                     sessionService.clear();
                     result.resolve(response);
             }).error(function(response){
@@ -76,7 +74,8 @@ tubeApp.service("authService", ["$http", "$q", "sessionService", function($http,
 
         /** islogged in **/
         this.isAuthenticated = function(){
-
+            console.log("The isAuthenticated code is being called...");
+            return sessionService.get('token')? true: false;
         };
 
         /** **/

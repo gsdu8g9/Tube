@@ -51,6 +51,7 @@ router.post("/login", function(req, res){
 
 //logout
 router.post("/logout", function(req, res, next){
+    console.log("This is working...");
     req.logout();
     next();
 }, function(req, res){

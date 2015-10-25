@@ -273,7 +273,7 @@ tubeApp
             {"name": "Uzbekistan", "code": "UZ"},
             {"name": "Vanuatu", "code": "VU"},
             {"name": "Venezuela", "code": "VE"},
-            {"name": "Viet Nam", "code": "VN"},
+            {"name": "Vietnam", "code": "VN"},
             {"name": "Virgin Islands, British", "code": "VG"},
             {"name": "Virgin Islands, U.S.", "code": "VI"},
             {"name": "Wallis and Futuna", "code": "WF"},
@@ -297,7 +297,7 @@ tubeApp
                 input.classList.remove("valid");
             }
             else {
-                if(validatorService.isAlphaNumeric(input.value)){
+                if(validatorService.isValidName(input.value)){
                     error.classList.remove("show");
                     error.classList.add("hide");
 
@@ -326,7 +326,7 @@ tubeApp
                 input.classList.remove("valid");
             }
             else {
-                if(validatorService.isAlphaNumeric(input.value)){
+                if(validatorService.isValidName(input.value)){
                     error.classList.remove("show");
                     error.classList.add("hide");
 
@@ -355,7 +355,7 @@ tubeApp
                 input.classList.remove("valid");
             }
             else {
-                if(validatorService.isAlphaNumeric(input.value)){
+                if(validatorService.isValidUserName(input.value)){
                     error.classList.remove("show");
                     error.classList.add("hide");
 
@@ -373,22 +373,55 @@ tubeApp
         };
 
         $scope.validatePassword = function(){
-            // check if field is empty.
-            if(true){
+            var input = document.querySelector("#password");
+            var error = document.querySelector("#password-help");
 
+            if(input.value === "") {
+                error.classList.remove("hide");
+                error.classList.add("show");
+
+                input.classList.add("error");
+                input.classList.remove("valid");
             }
             else {
+                if(validatorService.isValidPassword(input.value)){
+                    error.classList.remove("show");
+                    error.classList.add("hide");
 
+                    input.classList.remove("error");
+                    input.classList.add("valid");
+                }
+                else {
+                    error.classList.remove("hide");
+                    error.classList.add("show");
+
+                    input.classList.add("error");
+                    input.classList.remove("valid");
+                }
             }
         };
 
         $scope.validatePasswordConfirm = function(){
-            // check if field is empty.
-            if(true){
+            var pass = document.querySelector("#password");
+            var confirm = document.querySelector("#confirmPassword");
+            var error = document.querySelector("#confirmPassword-help");
 
+            console.log("'" + pass.value + "' '" + confirm.value + "'");
+            if(pass.value === confirm.value) {
+                console.log("A");
+                error.classList.remove("show");
+                error.classList.add("hide");
+
+                confirm.classList.remove("error");
+                confirm.classList.add("valid");
             }
             else {
+                console.log("B");
+                error.classList.remove("hide");
+                error.classList.add("show");
 
+                confirm.classList.add("error");
+                confirm.classList.remove("valid");
             }
         };
 

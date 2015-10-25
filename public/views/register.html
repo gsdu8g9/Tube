@@ -25,13 +25,13 @@
 
             <div class="form-group floating-label-form-group">
                 <label class="control-label" for="password">Create a password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="registerForm.password"/>
+                <input type="password" class="form-control" id="password" ng-blur="validatePassword()" aria-describedby="password-help" placeholder="Password" ng-model="registerForm.password"/>
                 <span id="password-help" class="help-block hide">This field required</span>
             </div>
             <div class="form-group floating-label-form-group">
                 <label class="control-label" for="confirmPassword">Confirm your password</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" ng-model="registerForm.confirmPassword"/>
-                <span id="confirmPassword-help" class="help-block">This field required</span>
+                <input type="password" class="form-control" id="confirmPassword" ng-blur="validatePasswordConfirm()" placeholder="Confirm Password" aria-describedby="confirmPassword-help" ng-model="registerForm.confirmPassword"/>
+                <span id="confirmPassword-help" class="help-block hide">This field required</span>
             </div>
             <div class="form-group floating-label-form-group">
                 <label class="control-label" for="gender">Gender</label>

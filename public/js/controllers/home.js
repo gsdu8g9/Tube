@@ -2,10 +2,7 @@
 
 tubeApp
 .controller("HomeController", ['$rootScope', '$scope', 'videoService', function($rootScope, $scope, videoService) {
-    $scope.home = {};
-    $scope.home.title = "HipKid";
     $scope.vidList = null;
-
 
     $scope.init = function(){
         videoService.getVideos()
