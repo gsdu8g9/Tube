@@ -26,6 +26,7 @@ tubeApp
 
                 scope.logOut = function(){
                     authService.logOut();
+                    $state.go('home');
                 };
 
                 element.popover({

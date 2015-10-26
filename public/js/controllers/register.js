@@ -11,7 +11,8 @@ tubeApp
              email:undefined,
              password:undefined,
              confirmPassword:undefined,
-            location:undefined
+             location:undefined,
+             terms:false
         };
 
         $scope.genders = [
@@ -406,9 +407,7 @@ tubeApp
             var confirm = document.querySelector("#confirmPassword");
             var error = document.querySelector("#confirmPassword-help");
 
-            console.log("'" + pass.value + "' '" + confirm.value + "'");
             if(pass.value === confirm.value) {
-                console.log("A");
                 error.classList.remove("show");
                 error.classList.add("hide");
 
@@ -416,7 +415,6 @@ tubeApp
                 confirm.classList.add("valid");
             }
             else {
-                console.log("B");
                 error.classList.remove("hide");
                 error.classList.add("show");
 
@@ -426,62 +424,171 @@ tubeApp
         };
 
         $scope.validateGender = function(){
-            // check if field is empty.
-            if(true){
+            var selector = document.querySelector("#gender");
+            var error = document.querySelector("#gender-help");
 
+            // check if field is empty.
+            if(validatorService.isValidGender(selector.options[selector.selectedIndex].text)){
+                error.classList.remove("show");
+                error.classList.add("hide");
+
+                selector.classList.remove("error");
+                selector.classList.add("valid");
             }
             else {
+                error.classList.remove("hide");
+                error.classList.add("show");
 
+                selector.classList.add("error");
+                selector.classList.remove("valid");
             }
         };
 
         $scope.validatePhone = function(){
-            // check if field is empty.
-            if(true){
+            var input = document.querySelector("#phone");
+            var error = document.querySelector("#phone-help");
 
+            if(input.value === "") {
+                error.classList.remove("hide");
+                error.classList.add("show");
+
+                input.classList.add("error");
+                input.classList.remove("valid");
             }
             else {
+                if(validatorService.isValidPhoneNumber(input.value)){
+                    error.classList.remove("show");
+                    error.classList.add("hide");
 
+                    input.classList.remove("error");
+                    input.classList.add("valid");
+                }
+                else {
+                    error.classList.remove("hide");
+                    error.classList.add("show");
+
+                    input.classList.add("error");
+                    input.classList.remove("valid");
+                }
             }
         };
 
         $scope.validateEmail = function(){
-            // check if field is empty.
-            if(true){
+            var input = document.querySelector("#email");
+            var error = document.querySelector("#email-help");
 
+            if(input.value === "") {
+                error.classList.remove("hide");
+                error.classList.add("show");
+
+                input.classList.add("error");
+                input.classList.remove("valid");
             }
             else {
+                if(validatorService.isValidEmail(input.value)){
+                    error.classList.remove("show");
+                    error.classList.add("hide");
 
+                    input.classList.remove("error");
+                    input.classList.add("valid");
+                }
+                else {
+                    error.classList.remove("hide");
+                    error.classList.add("show");
+
+                    input.classList.add("error");
+                    input.classList.remove("valid");
+                }
             }
         };
 
-        $scope.validateBirthday = function(){
-            // check if field is empty.
-            if(true){
+//        $scope.validateBirthday = function(){
+//            var month = document.querySelector("#month");
+//            var day = document.querySelector("#day");
+//            var year = document.querySelector("#year");
+//
+//            //if the year changed check the the month and day changed also
+//            if(true){
+//
+//            }
+//            else {
+//
+//            }
+//        };
 
+//        $scope.validateLocation = function(){
+//            var selector = document.querySelector("#location");
+//            var error = document.querySelector("#location-help");
+//            console.log(selector.options[selector.selectedIndex].text)
+//            // check if field is empty.
+//            if(validatorService.isValidLocation(selector.options[selector.selectedIndex].text)){
+//                error.classList.remove("show");
+//                error.classList.add("hide");
+//
+//                selector.classList.remove("error");
+//                selector.classList.add("valid");
+//            }
+//            else {
+//                error.classList.remove("hide");
+//                error.classList.add("show");
+//
+//                selector.classList.add("error");
+//                selector.classList.remove("valid");
+//            }
+//        };
+
+        $scope.acceptTerms = function(){
+            var terms = document.querySelector("#agreement");
+            var error = document.querySelector("#agreement-help");
+
+            if(terms.checked) {
+                error.classList.remove("show");
+                error.classList.add("hide");
+
+                terms.classList.remove("error");
+                terms.classList.add("valid");
             }
             else {
+                error.classList.remove("hide");
+                error.classList.add("show");
 
+                terms.classList.add("error");
+                terms.classList.remove("valid");
             }
         };
 
-        $scope.validateLocation = function(){
-            // check if field is empty.
-            if(true){
-
-            }
-            else {
-
-            }
+        $scope.validateAll = function(){
+            $scope.acceptTerms();
+            $scope.validateFirstname();
+            $scope.validateLastname();
+            $scope.validateUsername();
+            $scope.validatePassword();
+            $scope.validatePasswordConfirm();
+            $scope.validateGender();
+            $scope.validatePhone();
+            $scope.validateEmail();
         };
 
         $scope.register = function(){
-          authService.register($scope.registerForm.name, $scope.registerForm.username, $scope.registerForm.age,$scope.registerForm.email, $scope.registerForm.password, $scope.registerForm.confirmPassword)
-              .then(function(response){
-                  sessionService.setUserData(response)
-                  $state.go('/home');
-              }, function(response){
-                 $scope.registerForm.errorMessage = response.message;
-              });
+           // Check if accepted terms
+           $scope.validateAll();
+
+            // Check for errors
+            var errors = document.querySelectorAll(".show");
+
+            if(errors.length > 0){
+                //do nothing
+                console.log("There are still errors in the form.");
+            }
+            else {
+                console.log("This user is being created.....");
+              authService.register($scope.registerForm)
+                  .then(function(response){
+                      sessionService.setUserData(response)
+                      $state.go('home');
+                  }, function(response){
+                     $scope.registerForm.errorMessage = response.message;
+                  });
+            }
         };
     }]);

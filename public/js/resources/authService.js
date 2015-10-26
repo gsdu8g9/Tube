@@ -48,16 +48,19 @@ tubeApp.service("authService", ["$http", "$q", "sessionService", function($http,
             return result.promise;
         };
 
-        this.register = function(name, username, age, email, password, confirmPassword) {
+        this.register = function(item) {
             var result = $q.defer();
-
             var data = {
-                name:name,
-                username: username,
-                age: age,
-                email: email,
-                password: password,
-                confirm: confirmPassword
+                firstname:item.firstname,
+                lastname:item.lastname,
+                username:item.username,
+                gender:item.gender,
+                birthday:item.birthday || new Date(),
+                email:item.email,
+                password:item.password,
+                location:item.location || "",
+                phone:item.phone,
+                terms:item.terms
             }
 
             $http.post("/account/register", data, {

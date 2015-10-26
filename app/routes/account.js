@@ -61,16 +61,17 @@ router.post("/logout", function(req, res, next){
 
 //register
 router.post("/register", function(req, res){
-
+    console.log(util.inspect(req.body));
     var user = new User({
         username: req.body.username,
-        displayName: req.body.name,
-        age:req.body.age,
-        email:req.body.email
-//        password:req.body.password,
-//        confirmPassword:req.body.confirmPassword
+        displayName: req.body.firstname + " " + req.body.lastname,
+        gender:req.body.gender,
+        birthday:req.body.birthday || new Date(),
+        email:req.body.email,
+        location:req.body.location || "",
+        phone:req.body.phone,
+        terms:req.body.terms
     });
-    console.log(util.inspect(req.body));
 
     User.register(user, req.body.password, function(err, account){
        if(err){

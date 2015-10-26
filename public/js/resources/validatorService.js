@@ -10,8 +10,8 @@ tubeApp
             return true;
         };
 
-        this.isPhoneNumber = function(number){
-            var phoneRegex = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        this.isValidPhoneNumber = function(number){
+            var phoneRegex = /^\+?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
             return phoneRegex.test(number);
         };
 
@@ -47,12 +47,12 @@ tubeApp
         // Contains letters (a-z), numbers (0-9), dashes(-), underscores(_)
         // Contains a minimum of 2 characters
         this.isValidUserName = function(username){
-            var nameRegex = /^[0-9a-zA-Z_/-]{8,16}$/;
+            var nameRegex = /^[0-9a-zA-Z_/-]{3,16}$/;
             return nameRegex.test(username);
         };
 
         // Is valid Email Address
-        this.isEmail = function(email){
+        this.isValidEmail = function(email){
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
         };
@@ -64,6 +64,17 @@ tubeApp
         this.isValidName = function(name){
             var nameRegex = /^[a-zA-Z]{2,20}$/;
             return nameRegex.test(name);
+        };
+
+        this.isValidGender = function(gender){
+            var genders = ['male', 'female', 'other'];
+
+            if(genders.indexOf(gender.toLowerCase()) === -1) {
+                return false;
+            }
+            else {
+                return true;
+            }
         };
 
         this.isAlphaNumeric = function(subject){

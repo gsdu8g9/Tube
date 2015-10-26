@@ -7,7 +7,12 @@ var User = new Schema({
    username:String,
    password:String,
    displayName:String,
-   isAdmin:Boolean
+   gender:String,
+   birthday: Date,
+   email:String,
+   location:String,
+   phone:String,
+   terms:Boolean
 }, {
     toObject:{virtuals:true},
     toJSON:{virtuals:true}

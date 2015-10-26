@@ -35,47 +35,49 @@
             </div>
             <div class="form-group floating-label-form-group">
                 <label class="control-label" for="gender">Gender</label>
-                <select id="gender" class="form-control input-sm"
+                <select id="gender" class="form-control input-sm" ng-change="validateGender()"
                         ng-init="registerForm.gender = genders[0]"
                         ng-model="registerForm.gender"
                         ng-options="item.displayName for item in genders">
                 </select>
-                <span id="gender-help" class="help-block">This field required</span>
+                <span id="gender-help" class="help-block hide">This field required</span>
             </div>
-            <div class="row">
-                <label class="control-label col-xs-12 pull-left">Birthday</label>
-                <div class="form-group col-xs-4">
-                    <select id="month" class="form-control input-sm"
-                            ng-init="registerForm.birthday.month = birthday.month[0]"
-                            ng-model="registerForm.birthday.month"
-                            ng-options="item.name for item in birthday.month">
-                    </select>
-                </div>
-                <div class="form-group col-xs-4">
-                    <select id="day" class="form-control input-sm"
-                            ng-init="registerForm.birthday.day = birthday.day[0]"
-                            ng-model="registerForm.birthday.day"
-                            ng-options="item for item in birthday.day">
-                    </select>
-                </div>
-                <div class="form-group col-xs-4">
-                    <select id="year" class="form-control input-sm"
-                            ng-init="registerForm.birthday.year = birthday.year[0]"
-                            ng-model="registerForm.birthday.year"
-                            ng-options="item for item in birthday.year">
-                    </select>
-                </div>
-                <span id="birthday-help" style="margin-left:15px;" class="help-block">This field required</span>
-            </div>
+
+            <!--<div class="row">-->
+                <!--<label class="control-label col-xs-12 pull-left">Birthday</label>-->
+                <!--<div class="form-group col-xs-4">-->
+                    <!--<select id="month" class="form-control input-sm"-->
+                            <!--ng-init="registerForm.birthday.month = birthday.month[0]"-->
+                            <!--ng-model="registerForm.birthday.month"-->
+                            <!--ng-options="item.name for item in birthday.month">-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class="form-group col-xs-4">-->
+                    <!--<select id="day" class="form-control input-sm"-->
+                            <!--ng-init="registerForm.birthday.day = birthday.day[0]"-->
+                            <!--ng-model="registerForm.birthday.day"-->
+                            <!--ng-options="item for item in birthday.day">-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class="form-group col-xs-4">-->
+                    <!--<select id="year" class="form-control input-sm"-->
+                            <!--ng-init="registerForm.birthday.year = birthday.year[0]"-->
+                            <!--ng-model="registerForm.birthday.year"-->
+                            <!--ng-options="item for item in birthday.year">-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<span id="birthday-help" style="margin-left:15px;" class="help-block">This field required</span>-->
+            <!--</div>-->
 
             <div class="form-group floating-label-form-group">
                 <label class="control-label" for="phone">Mobile phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="Mobile Phone" ng-model="registerForm.mobilephone"/>
+                <input type="text" class="form-control" id="phone" ng-blur="validatePhone()" placeholder="Mobile Phone" ng-model="registerForm.mobilephone"/>
+                <span id="phone-help" class="help-block hide">This field required</span>
             </div>
             <div class="form-group floating-label-form-group">
                 <label class="control-label" for="email">Your email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Email Address" ng-model="registerForm.email"/>
-                <span id="email-help" class="help-block">This field required</span>
+                <input type="email" class="form-control" id="email" ng-blur="validateEmail()" placeholder="Email Address" ng-model="registerForm.email"/>
+                <span id="email-help" class="help-block hide">This field required</span>
             </div>
             <div class="form-group">
                 <label class="control-label" for="location">Location</label>
@@ -87,9 +89,9 @@
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="agreement">I agree to the <a ui-sref="/home">Terms of Service</a>
+                    <input type="checkbox" id="agreement" ng-change="acceptTerms()" ng-model="registerForm.agreement">I agree to the <a ui-sref="/home">Terms of Service</a>
                 </label>
-                <span id="agreement-help" class="help-block">This field required</span>
+                <span id="agreement-help" class="help-block hide">This field required</span>
             </div>
             <p class="help-block" data-ng-if="registerForm.errorMessage">{{registerForm.errorMessage}}</p>
             <button type="submit" class="btn btn-success">Register</button>
