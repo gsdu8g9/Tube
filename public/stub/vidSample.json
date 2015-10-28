@@ -1,38 +1,90 @@
 [
     {
-    "id":"abcd",
-    "name":"Thors Hammer",
-    "owner":"Shane White",
-    "views":"5,000"
+        "id":"abcd",
+        "name":"Thors Hammer",
+        "owner":"Shane White",
+        "views":"5,000",
+        "likes":"105",
+        "dislikes":"57",
+        "commentCount":"50",
+        "userPic":"/img/test_Animal.jpg",
+        "comments":true
     },
     {
-    "id":"efgh",
-    "name":"Godzilla",
-    "owner":"John Neimo",
-    "views":"6,000"
+        "id":"efgh",
+        "name":"Godzilla",
+        "owner":"John Neimo",
+        "views":"6,000",
+        "likes":"105",
+        "dislikes":"57",
+        "commentCount":"60",
+        "userPic":"/img/test_Bert.jpg",
+        "comments":true
     },
     {
-    "id":"ijkl",
-    "name":"Spider-Man",
-    "owner":"Tom Anderson",
-    "views":"7,000"
+        "id":"ijkl",
+        "name":"Spider-Man",
+        "owner":"Tom Anderson",
+        "views":"7,000",
+        "likes":"105",
+        "dislikes":"57",
+        "commentCount":"80",
+        "userPic":"/img/test_Bigbird.png",
+        "comments":true
     },
     {
-    "id":"mnop",
-    "name":"Transformers",
-    "owner":"Carson Daily",
-    "views":"8,000"
+        "id":"mnop",
+        "name":"Transformers",
+        "owner":"Carson Daily",
+        "views":"8,000",
+        "likes":"105",
+        "dislikes":"57",
+        "commentCount":"90",
+        "userPic":"/img/test_Elmo.jpeg",
+        "comments":true
     },
     {
-    "id":"qrst",
-    "name":"Dare Devil",
-    "owner":"Aron Burr",
-    "views":"9,000"
+        "id":"qrst",
+        "name":"Dare Devil",
+        "owner":"Aron Burr",
+        "views":"9,000",
+        "likes":"105",
+        "dislikes":"57",
+        "commentCount":"100",
+        "userPic":"/img/test_Ernie.jpg",
+        "comments":true
     },
     {
-    "id":"uvwx",
-    "name":"Captain America",
-    "owner":"Bill Hendricks",
-    "views":"10,000"
+        "id":"uvwx",
+        "name":"Captain America",
+        "owner":"Bill Hendricks",
+        "views":"10,000",
+        "likes":"105",
+        "dislikes":"57",
+        "commentCount":"120",
+        "userPic":"/img/test_Gonzo.jpg",
+        "comments":true
+    },
+    {
+        "id":"ucre",
+        "name":"BMW Factory",
+        "owner":"Wane Brady",
+        "views":"11,200",
+        "likes":"105",
+        "dislikes":"57",
+        "commentCount":"140",
+        "userPic":"/img/test_Kermit.jpeg",
+        "comments":true
+    },
+    {
+        "id":"vtrw",
+        "name":"BMW Factory",
+        "owner":"Ben Thomas",
+        "views":"12,500",
+        "likes":"105",
+        "dislikes":"57",
+        "commentCount":"160",
+        "userPic":"/img/test_Misspiggy.jpg",
+        "comments":true
     }
 ]
