@@ -62,6 +62,7 @@ mongoose.connect("mongodb://localhost/tube", function(err){
 // configure routes
 var staticRoutes = require("./app/routes/index");
 var account = require("./app/routes/account");
+var video = require("./app/routes/video");
 
 app.use("*", function(req, res, next){
     res.header("Cache-Control","private, no-cache, no-store, must-revalidate");
@@ -70,7 +71,8 @@ app.use("*", function(req, res, next){
     next();
 })
 
-app.use("/account",account);
+app.use("/account", account);
+app.use("/video", video);
 app.use("/", staticRoutes);
 
 var port = 8080;

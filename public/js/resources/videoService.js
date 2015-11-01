@@ -21,7 +21,10 @@ tubeApp.service("videoService", ['$http', function($http){
             method:'GET',
             url: '../stub/commentSample.json'
         }).then(function(response){
-                return response.data;
+            var comments = response.data.filter(function(comment){
+                return comment.vid_id === id;
+            })
+            return comments;
         });
     };
 

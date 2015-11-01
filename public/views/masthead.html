@@ -9,7 +9,7 @@
                 </div>
                 <ul class="nav navbar-nav menu-btn">
                     <li>
-                        <a>
+                        <a ng-click="toggleSideMenu()">
                             <i class="fa fa-bars fa-lg"></i>
                         </a>
                     </li>
@@ -38,7 +38,7 @@
                 </li>
             </ul>
         </div>
-        <div class="guid-menu">
+        <div class="guid-menu" ng-show="showSideMenu">
             <div class="guid-container">
                 <ul>
                     <li>
@@ -48,7 +48,7 @@
                                     <a class="list-group-item" ui-sref="home"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
                                 </li>
                                 <li>
-                                    <a class="list-group-item" ui-sref="#"><i class="fa fa-user fa-fw"></i>&nbsp; My Channel</a>
+                                    <a class="list-group-item" ui-sref="myprofile"><i class="fa fa-user fa-fw"></i>&nbsp; My Channel</a>
                                 </li>
                                 <li>
                                     <a class="list-group-item" ui-sref="history"><i class="glyphicon glyphicon-hourglass fa-fw"></i>&nbsp; History</a>
@@ -74,7 +74,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="list-group-item" ui-sref="history">
+                                    <a class="list-group-item" ui-sref="home">
                                         <i class="glyphicon glyphicon-list fa-fw"></i>&nbsp; List 3
                                     </a>
                                 <li>

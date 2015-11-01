@@ -4,16 +4,16 @@ tubeApp
     .controller("MastheadController", ['$rootScope', '$scope', 'authService', 'sessionService', function($rootScope, $scope, authService) {
         $scope.home = {};
         $scope.home.title = "HipKid";
-//        $scope.navTemplateUrl = '/views/masthead.html';
+        $scope.showSideMenu = false;
 
         $scope.isLoggedIn= function(){
             console.log("This is a Hit...");
             return authService.isAuthenticated();
         };
 
-//        $scope.logOut = function(){
-//            authService.logOut();
-//        };
+        $scope.toggleSideMenu = function(){
+            $scope.showSideMenu = !$scope.showSideMenu;
+        };
 
         $scope.showUserOptions = function(){
 

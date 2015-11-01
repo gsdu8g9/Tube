@@ -1,0 +1,84 @@
+<div class="commenterImage">
+    <a ui-sref="user({username: comment.username})">
+        <img src="{{comment.avatar_url}}" />
+    </a>
+</div>
+<div class="commentText">
+    <div class="comment-header">
+        <a ui-sref="user({username: comment.username})">
+            {{comment.username}}
+        </a>
+        <span>1 day ago</span>
+    </div>
+    <p>{{comment.comment}}</p>
+    <div class="comment-footer">
+        <div class="footer-actions">
+            <span ng-click="displayReply()" class="reply-gate">Reply</span>
+            <ul class="rating-list">
+                <li class="ratings good-rating">
+                    <span class="glyphicon glyphicon-thumbs-up" ng-click="togglelikeComment()"></span>{{comment.likes}}
+                </li>
+                <li class="ratings bad-rating">
+                    <span class="glyphicon glyphicon-thumbs-down" ng-click="toggleDislikeComment()"></span>{{comment.dislikes}}
+                </li>
+            </ul>
+        </div>
+        <div class="reply-box" ng-show="showReply">
+            <div style="min-height:50px;">
+                <img src="/img/test_Fozzie.jpg"/>
+                <textarea />
+            </div>
+            <div class="reply-btns">
+                <button class="btn btn-sm btn-default" style="margin-right:10px;" ng-click="cancelReply()">Cancel</button>
+                <button class="btn btn-sm btn-primary" ng-click="cancelReply()">Reply</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div style="background-color:#FF0000; height:30px;">-->
+    <!--<div comment-entry comment="subcomment"></div>-->
+<!--</div>-->
+<style>
+    .comment-footer {
+        margin-left:48px;
+        position:relative;
+    }
+    .commentText p {
+        margin-left:48px;
+        position:relative;
+        margin-bottom: 0px;
+    }
+    .commenterImage {
+        width:48px;
+        margin-right:5px;
+        height:100%;
+        float:left;
+    }
+    .commenterImage img {
+        width:100%;
+        border-radius:50%;
+    }
+    .reply-box {
+        margin-bottom:20px;
+        margin-top:5px;
+    }
+    .reply-box img {
+        float:left;
+        margin-right:10px;
+        width:32px;
+        height:32px;
+    }
+    .reply-box textarea {
+        width:620px;
+        min-height:50px;
+        float:left;
+        margin:0px;
+    }
+    .reply-btns {
+        margin-top:5px;
+        text-align:right;
+    }
+    .reply-gate {
+        margin-right:10px;
+    }
+</style>

@@ -1,6 +1,8 @@
 [
     {
         "username":"JohnDoe",
+        "parent_comment":"",
+        "vid_id":"vtrw",
         "avatar_url":"/img/test_Animal.jpg",
         "profile_url":"/JohnDoe",
         "likes":"15",
@@ -11,6 +13,8 @@
     },
     {
         "username":"JaneDoe",
+        "parent_comment":"",
+        "vid_id":"ucre",
         "avatar_url":"/img/test_Bert.jpg",
         "profile_url":"/JohnDoe",
         "likes":"104",
@@ -21,6 +25,8 @@
     },
     {
         "username":"BanDoe",
+        "parent_comment":"",
+        "vid_id":"uvwx",
         "avatar_url":"/img/test_Bigbird.png",
         "profile_url":"/JohnDoe",
         "likes":"135",
@@ -31,6 +37,8 @@
     },
     {
         "username":"RonDoe",
+        "parent_comment":"",
+        "vid_id":"ucre",
         "avatar_url":"/img/test_Elmo.jpeg",
         "profile_url":"/JohnDoe",
         "likes":"105",

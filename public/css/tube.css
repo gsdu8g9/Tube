@@ -56,17 +56,12 @@
 		margin:3px 5px;
 		color:#333333;
 		display:inline-block;
-		/*border: solid 1px transparent;*/
-		/*outline: 0px;*/
 		background: none;
 		box-shadow: none;
 		height:28px;
 		vertical-align: middle;
 		border-radius:2px;
 	}
-	/*.page-container{*/
-        /*height: 100% !important;*/
-	/*}*/
 	.guid-container{
 		width:230px;
 		padding: 13px 22px;
@@ -113,14 +108,14 @@
         padding-right:0 !important;
     }
 	.content {
-        /*min-height: 600px;*/
 		height:100%;
         padding:0px !important;
 		background-color: #FFFFFF;
 		margin-top: 150px;
-		margin-left: 360px;
+		margin-left: 250px;
         margin-bottom: 80px;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+        width:1270px !important;
 	}
     .masthead{
         background-color: #FFFFFF;
@@ -288,11 +283,12 @@
     }
     .home-video-list-item {
         padding:0px;
-        margin:15px;
-        background:#FFFFFF;
+        margin-right:10px;
+        margin-bottom:12px;
+        vertical-align: top;
         display: inline-block;
-        height:110px;
-        width:160px;
+        word-wrap: break-word;
+        width:195px;
     }
     .home-video-list-item .detail-wrapper a {
         padding:0px;
@@ -301,8 +297,8 @@
     }
     .home-video-list-item .top-thumb-nail {
         top:0;
-        width:180px;
-        height:136px;
+        width:195px;
+        height:110px;
         background-color:#000;
         margin:0 5px 0 0;
     }
@@ -428,25 +424,11 @@
         margin:0;
         margin-top:10px;
     }
-    .commenterImage {
-        width:48px;
-        margin-right:5px;
-        height:100%;
-        float:left;
-    }
-    .commenterImage img {
-        width:100%;
-        border-radius:50%;
-    }
-    .commentText p {
-        margin-left:48px;
-        position:relative;
-        margin-bottom: 0px;
-    }
-    .comment-footer {
-        margin-left:48px;
-        position:relative;
-    }
     .vid-comment {
         padding-bottom: 25px;
+    }
+    /********** Video *************/
+    .vjs-default-skin .vjs-big-play-button{
+        top: 42% !important;
+        left: 42% !important;
     }
