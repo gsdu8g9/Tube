@@ -302,6 +302,26 @@
         background-color:#000;
         margin:0 5px 0 0;
     }
+    .vid-time {
+        margin-top:0;
+        margin-right:0;
+        padding:0 4px;
+        font-weight:500;
+        font-size:11px;
+        background-color:#000;
+        color:#fff !important;
+        height:14px;
+        line-height:14px;
+        opacity:.75;
+        vertical-align:top;
+        display:inline-block;
+        position:absolute;
+        right:2px;
+        bottom:2px;
+    }
+    .place-thumbnail {
+        position:relative;
+    }
     .bottom-detail-wrapper{
         margin-top:10px;
         margin-bottom:10px;
