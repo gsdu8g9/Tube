@@ -4,10 +4,13 @@ var Schema = mongoose.Schema;
 var Video = new Schema({
     id:String,
     name:String,
+    thumbnail_url:String,
+    vid_url:String,
     publish_date:{
         type: Date,
         default: Date.now
     },
+    vid_time:String,
     description:String,
     ownerid:String,
     owner:String,

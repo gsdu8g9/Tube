@@ -51,18 +51,20 @@ tubeApp
             videoService.getVideos()
                 .then(function(response){
                     $scope.vidList = response;
-                    $scope.vidList.forEach(function(item){
-                        if(item.id === $scope.viewVideo){
-                            $scope.activeVid = item;
-                            $("video:nth-child(1)").attr("src",$scope.activeVid.vid_url);
-                            return;
-                        }
-                    });
+                });
+        };
+
+        $scope.getVideo = function(){
+            videoService.getVideo($scope.viewVideo)
+                .then(function(response){
+                    $scope.activeVid = response;
+                    $("video:nth-child(1)").attr("src",$scope.activeVid.vid_url);
                 });
         };
 
         $scope.init = function(){
             if($scope.viewVideo){
+                $scope.getVideo();
                 $scope.getSuggestedVideos();
                 $scope.getComments();
             }

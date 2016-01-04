@@ -6,21 +6,24 @@ var Video = require("../models/video");
 
 // POST Create
 // Create a movie
-router.post("", passport.authenticate("bearer", { session: false }), function(){
+router.post("/add", passport.authenticate("bearer", { session: false }), function(req, res){
     var user = req.user;
     var video = new Video({
-        id:"anGrQ",
+        id:req.body.id,
         name:req.body.name,
+        thumbnail_url:req.body.thumbnail_url,
+        vid_url:req.body.vid_url,
         publish_date: Date.now(),
+        vid_time:req.body.vid_time,
         description:req.body.description,
         ownerid:req.body.ownerid,
         owner:req.body.owner,
-        profile_url:user.profile_url,
+        profile_url:user.profile_url || req.body.profile_url,
         views:0,
         likes:0,
         dislikes:0,
         commentCount:0,
-        userPic:user.userPic,
+        userPic:user.userPic || req.body.userPic,
         comments:true
     });
 
@@ -32,7 +35,7 @@ router.post("", passport.authenticate("bearer", { session: false }), function(){
         }
 
         res.statusCode = 201;
-        res.json(post);
+        res.json(video);
     });
 });
 
@@ -42,8 +45,8 @@ router.get("/:id", function(req, res, next){
     var obj = {
         id:req.params.id
     };
-
-    Video.findById(req.params.id, function(err, video) {
+    console.log(obj);
+    Video.findOne({"id": req.params.id }, function(err, video) {
        if(err){
            res.statusCode = 400;
            res.json({message: "Something went wrong."});
@@ -57,6 +60,8 @@ router.get("/:id", function(req, res, next){
     });
 });
 
+// GET Read
+// Get all videos
 router.get("/", function(req, res) {
     Video.find({}, function(err, videos){
         res.json(videos);
@@ -66,7 +71,7 @@ router.get("/", function(req, res) {
 
 // Update
 // Make a change to meta data for a video
-router.put("/", passport.authenticate("bearer", { session: false }), function(req, res){
+router.put("/edit", passport.authenticate("bearer", { session: false }), function(req, res){
     Video.findById(req.body.id, function(err, video){
         if(err || !video){
             res.statusCode = 400;
@@ -96,7 +101,7 @@ router.put("/", passport.authenticate("bearer", { session: false }), function(re
 
 // Delete
 // Remove a movie from db
-router.post("", function(){
+router.post("/delete", function(){
 
 });
 

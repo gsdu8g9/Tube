@@ -1,22 +1,57 @@
 'use strict';
 
-tubeApp.service("videoService", ['$http', function($http){
+tubeApp.service("videoService", ['$http', 'sessionService', function($http, sessionService){
 
     var videoService = {};
 
-    /** get users Posted Videos*/
+    /** Get users Posted Videos **/
     videoService.getVideos = function(){
         return $http({
             method:'GET',
-            url: '../stub/vidSample.json'
+            url: '/video'
         }).then(function(response){
             return response.data;
         });
     };
 
+    /** Get users video viewing history **/
+    videoService.history = function(){
+        // Get user_id
+        // Make call
+        $http(function(){
+
+        });
+    };
+
+    /** Get videos to recommend to user **/
+    videoService.recommended = function(){
+        // Get user_id
+        // Make call
+        $http(function(){
+
+        });
+    };
+
+    // Get trending videos
+    videoService.trending = function(){
+        // Make call
+        $http(function(){
+
+        });
+    };
+
+    /** Get video to view **/
+    videoService.getVideo = function(id){
+        return $http({
+            method:'GET',
+            url: '/video/' + id
+        }).then(function(response){
+                return response.data;
+            });
+    };
+
     /** get comments of Posted Video*/
     videoService.getComments = function(id){
-        console.log("passing id: " + id);
         return $http({
             method:'GET',
             url: '../stub/commentSample.json'
