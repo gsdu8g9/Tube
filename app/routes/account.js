@@ -4,6 +4,7 @@ var crypto = require("crypto");
 var User = require("../models/user");
 var util = require("util");
 var AccessToken = require("../models/accessToken");
+var validator = require("../models/validator");
 
 var router = express.Router();
 
@@ -59,6 +60,52 @@ router.post("/logout", function(req, res, next){
     res.end();
 });
 
+router.post("/update", passport.authenticate("bearer", { session: false }), function(req,res){
+	
+	//Check if logged in and session is valid
+	if(req.user){
+		//check if user exists
+		//if updating password do something special
+		// may need last updated date for user
+		console.log(req.body.username + ' 1!!');
+		console.log(req.body.name + ' 2!!');
+		
+		var user = req.user;
+		
+		console.log("ytytyt: " , user._id);
+		
+		User.findById(user._id, function (err, dbUser){
+			
+			//console.log("dbUser: ", dbUser);
+			 if (!dbUser)
+				    return next(new Error('Could not load Document'));
+				  else {
+				    // do your updates here
+					  dbUser.username = req.body.username;
+				    //p.modified = new Date();
+
+				    dbUser.save(function(err) {
+				      if (err)
+				        console.log('error 111')
+				      else
+				        console.log('success 222')
+				    });
+				  }
+			
+			
+		});
+		
+		
+	}
+	else{
+		res.send(500, { error: "You are not logged in!!!" });
+        return;
+	}
+//	console.log(res.end());
+});
+
+
+
 //register
 router.post("/register", function(req, res){
     console.log(util.inspect(req.body));
@@ -72,7 +119,11 @@ router.post("/register", function(req, res){
         phone:req.body.phone,
         terms:req.body.terms
     });
-
+    
+    //work out this
+    console.log(validator.isValidUserName(req.username))
+    
+    
     User.register(user, req.body.password, function(err, account){
        if(err){
            res.statusCode = 400;
