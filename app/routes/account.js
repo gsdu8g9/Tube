@@ -121,7 +121,8 @@ router.post("/update", passport.authenticate("bearer", {
 							console.log('success 222');
 					});
 					res.statusCode = 200;
-					res.end();
+					res.json(dbUser);
+					//res.end();
 				}else{
 					console.log('isValid = ' + isValid);
 					res.send(500,{error : errMsg});
