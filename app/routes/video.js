@@ -72,8 +72,8 @@ router.get("/", function(req, res) {
 // Update
 // Make a change to meta data for a video
 router.post("/edit", passport.authenticate("bearer", { session: false }), function(req, res){
-    Video.findById(req.body._id, function(err, video){
-    	
+    //Video.findById(req.body._id, function(err, video){
+    Video.findOne({ 'id': req.body.id }, function(err, video){	
     	console.log("testing video edit!!!!");
         if(err || !video){
             res.statusCode = 400;
