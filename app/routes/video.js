@@ -71,22 +71,34 @@ router.get("/", function(req, res) {
 
 // Update
 // Make a change to meta data for a video
-router.put("/edit", passport.authenticate("bearer", { session: false }), function(req, res){
-    Video.findById(req.body.id, function(err, video){
+router.post("/edit", passport.authenticate("bearer", { session: false }), function(req, res){
+    //Video.findById(req.body._id, function(err, video){
+    Video.findOne({ 'id': req.body.id }, function(err, video){	
+    	console.log("testing video edit!!!!");
         if(err || !video){
             res.statusCode = 400;
             res.json({message: "Something went wrong."});
         }
 
-        if(video.username !== req.user.username){
+        /*if(video.username !== req.user.username){
             res.statusCode = 401;
             res.json({message: "Not going to happen..."});
             return;
-        }
+        }*/
 
+        //video.name = req.body.name;
+        //video.description = req.body.name;
+        console.log("video object: " + video);
+        console.log("video name: " + video.name);
+        console.log("video description: " + video.description);
+        
+        console.log("req.body.id: " + req.body.id);
+        console.log("req.body.name: " + req.body.name);
+        console.log("req.body.description: " + req.body.description);
+        
         video.name = req.body.name;
-        video.description = req.body.name;
-
+        video.description = req.body.description;
+        
         video.save(function(err, video){
            if(err){
                res.statusCode = 400;

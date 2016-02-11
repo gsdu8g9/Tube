@@ -2,21 +2,146 @@
 <div data-ng-controller="MastheadController">
     <div ng-include="" src="'views/masthead.html'"></div>
 </div>
+<style>
+    .chnl-content {
+        height:100%;
+        padding:0px !important;
+        background-color: #FFFFFF;
+        margin-top: 150px;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+        width:1270px !important;
+    }
+    .usr-content {
+        height:100%;
+        padding:0px !important;
+        background-color: #FFFFFF;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+        width:1270px !important;
+    }
+    .chnl-content-btm {
+        margin-top:20px;
+    }
+    .chnl-section {
+        min-height:205px;
+        padding:18px;
+        border-bottom: 1px solid #e8e8e8;
+    }
+    .chnl-banner {
+        height: 210px;
+        background-image:url(/img/pattern-bg.png);
+        position:relative;
+    }
+    .chnl-ban-nav {
+        margin:0px 15px;
+        padding:10px;
+        height:39px;
+    }
+    .chnl-low-head {
+        margin-right:40px;
+        opacity: .75;
+        display:inline-block;
+        text-decoration: none;
+    }
+    .chnl-head-profile-img-container {
+        top:0;
+        left:15px;
+        height:100px;
+        width:100px;
+        position: absolute;
+        background-color:rgba(0,0,0,.2);
+        display: inline-block;
+    }
+    .chnl-head-profile-img {
+        width: 100px;
+        height:100px;
+        background-color:#e9ecee;
+    }
+    .chnl-ban-detail {
+        /*height:138px;*/
+    }
+    .chnl-ban-detail-content {
+        padding: 15px 0 0;
+        position: relative;
+        line-height: 13px;
+    }
+    .chnl-subheader {
+        
+    }
+    .second-head-nav {
+        display: inline;
+        text-decoration: none;
+        list-style:none;
+        padding-left:0px;
+        margin:0px;
+        float: left;
+    }
+    .second-head-nav li {
+        display: inline-block;
+        float: left;
+        margin-left: 20px;
+    }
+    .second-head-nav li:first-child {
+        margin-left: 0px;
+    }
+    .second-head-nav span{
+        color:#333333;
+        font-weight: 500;
+        height: 29px;
+        line-height: 29px;
+        /*border-bottom:3px solid #cc181e;*/
+        display: inline-block;
+    }
+    .selected {
+        border-bottom:3px solid #cc181e;
+    }
+</style>
 <!--end masthead-->
-<div style="height:900px; margin-top:120px;" class="container">
-    <div style="height:360px; width:100%; margin-bottom:10px; background-color:#FFF; box-shadow: 0 1px 2px rgba(0,0,0,.1);
-">
-
-    </div>
-    <div>
-        <div style="position:relative; width:80%; height: 360px; margin:0px 0px 10px 0px; background-color:#FFF; box-shadow: 0 1px 2px rgba(0,0,0,.1);
-">
-            <div style="position:relative;height:50px; bottom:0px !important; padding:18px;text-align: center;">
-                <button class="btn btn-default btn-sm">Load More</button>
+<div class="container">
+    <div class="chnl-content col-lg-12 col-md-12">
+        <div class="span12 chnl-banner" >
+            <div class="chnl-head-profile-img-container">
+                <img class="chnl-head-profile-img" src="/img/test_Fozzie.jpg"/>
+            </div>
+        </div>
+        <div class="span12 chnl-ban-detail">
+            <div class="span12 chnl-ban-detail-content">
+                <div class="span12" style="padding:0 15px; height:83px;">
+                    <h2 style="float:left;">Shane White</h2>
+                    <div class="btn-group btn-group-xs" style="float:right;">
+                        <button type="button" class="btn btn-default">
+                            <i class="glyphicon glyphicon-ok fa-lg"></i>
+                            Subscribers
+                        </button>
+                        <button type="button" class="btn btn-default">
+                            <i class="glyphicon glyphicon-cog fa-lg"></i>
+                        </button>
+                        <button type="button" class="btn btn-default">
+                        1000000
+                        </button>
+                    </div>
+                </div>
+                <div class="span12 chnl-subheader" style="position: relative; padding:0px 15px 0px 15px;">
+                    <ul class="second-head-nav">
+                        <li><span ng-click="goTo($event, 'user.home')">Home</span></li>
+                        <li><span ng-click="goTo($event, 'user.video')">Video</span></li>
+                        <li><span ng-click="goTo($event, 'user.playlists')">Playlists</span></li>
+                        <li><span ng-click="goTo($event, 'user.channels')">Channels</span></li>
+                        <li><span ng-click="goTo($event, 'user.discussion')">Discussion</span></li>
+                        <li><span ng-click="goTo($event, 'user.about')">About</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="usr-content col-lg-12 col-md-12" style="height: 500px;">
+        <div ui-view></div>
+    </div>
+
+
+    </div>
 <!-- GLOBAL NAV -->
 <div data-ng-controller="FooterController">
     <div ng-include="" src="'views/footer.html'"></div>
