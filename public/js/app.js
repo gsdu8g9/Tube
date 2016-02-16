@@ -12,6 +12,16 @@ var tubeApp = angular.module('tubeApp', ['ui.router'])
             templateUrl: '/views/history.html',
             controller: 'HistoryController'
         })
+        .state('history.search', {
+            url:'/search',
+            templateUrl: '/views/historySearch.html',
+            controller: 'HistorySearchController'
+        })
+        .state('history.watch', {
+            url:'/watch',
+            templateUrl: '/views/historyWatch.html',
+            controller: 'HistoryWatchController'
+        })
         .state('login', {
             url:'/login' ,
             templateUrl:'/views/login.html' ,
