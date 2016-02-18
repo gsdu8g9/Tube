@@ -14,13 +14,13 @@ var Post = require("../models/post");
 // Create a post
 router.post("/add", passport.authenticate("bearer", { session: false }), function(req, res){
     var user = req.user;
-
     var post = new Post({
         username:user.username,
         parent_comment:req.body.parent_comment,
+        child_comments:[],
         vid_id:req.body.vid_id,
-        avatar_url:req.body.avatar_url,
-        profile_url:req.body.profile_url,
+        avatar_url:user.avatar_url || "/img/Avatar_Blank.jpg",
+        profile_url:user.profile_url || "",
         likes:0,
         dislikes:0,
         comment: req.body.comment,
@@ -33,6 +33,8 @@ router.post("/add", passport.authenticate("bearer", { session: false }), functio
             default: Date.now
         }
     });
+
+    console.log("--: " + post);
 
     post.save(function (err, post) {
         if (err) {
@@ -57,6 +59,23 @@ router.get("/:id", function(req, res, next){
         if(err){
             res.statusCode = 400;
             res.json({message: "Something went wrong."});
+            return;
+        }
+        if(!post){
+            res.statusCode = 404;
+            return;
+        }
+        res.json(post);
+    });
+});
+
+// GET Read
+// Get a specific post
+router.get("/all/:id", function(req, res, next){
+
+    Post.find({"vid_id": req.params.id }, function(err, post) {
+        if(err){
+            res.statusCode = 400;
             return;
         }
         if(!post){

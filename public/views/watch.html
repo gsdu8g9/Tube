@@ -43,14 +43,16 @@
             <div class="vid-comments-box">
                 <h4>All Comments ({{activeVidComments.length}})</h4>
                 <div style="margin-bottom: 20px; height:50px;">
-                    <img width="50" src="{{activeVid.userPic}}" style="float:left; margin-right:20px;" />
-                    <textarea style="width:655px; height:50px;float:left;" />
+                    <img width="50" src="{{userAvatar}}" style="float:left; margin-right:20px;" />
+                    <form method="post" action="setNewComment()">
+                        <textarea class="strt-new-comment" style="width:655px; height:50px;float:left;" />
+                    </form>
                 </div>
                 <div class="actionBox">
                     <ul class="commentList">
                         <li class="vid-comment" ng-repeat="comment in activeVidComments">
                             <div comment-entry comment="comment"></div>
-                            <ul>
+                            <ul ng-if="comment.child_comment.length > 0">
                                 <li>
                                     <div comment-entry comment="subcomment"></div>
                                 </li>

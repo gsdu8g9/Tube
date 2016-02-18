@@ -9,6 +9,7 @@ var User = new Schema({
    displayName:String,
    gender:String,
    birthday: Date,
+   avatar_url:String,
    email:String,
    location:String,
    phone:String,

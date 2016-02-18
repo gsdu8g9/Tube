@@ -13,19 +13,19 @@
     <p>{{comment.comment}}</p>
     <div class="comment-footer">
         <div class="footer-actions">
-            <span ng-click="displayReply()" class="reply-gate">Reply</span>
+            <span ng-click="displayReply($event)" data-cid="{{comment._id}}" class="reply-gate">Reply</span>
             <ul class="rating-list">
                 <li class="ratings good-rating">
-                    <span class="glyphicon glyphicon-thumbs-up" ng-click="togglelikeComment()"></span>{{comment.likes}}
+                    <span class="glyphicon glyphicon-thumbs-up" ng-click="togglelikeComment($event)" data-cid="{{comment._id}}"></span>{{comment.likes}}
                 </li>
                 <li class="ratings bad-rating">
-                    <span class="glyphicon glyphicon-thumbs-down" ng-click="toggleDislikeComment()"></span>{{comment.dislikes}}
+                    <span class="glyphicon glyphicon-thumbs-down" ng-click="toggleDislikeComment($event)" data-cid="{{comment._id}}"></span>{{comment.dislikes}}
                 </li>
             </ul>
         </div>
         <div class="reply-box" ng-show="showReply">
             <div style="min-height:50px;">
-                <img src="/img/test_Fozzie.jpg"/>
+                <img src="{{userAvatar}}"/>
                 <textarea />
             </div>
             <div class="reply-btns">
@@ -80,5 +80,12 @@
     }
     .reply-gate {
         margin-right:10px;
+        color:#555555;
+    }
+    .reply-gate:hover {
+
+    }
+    .selected {
+        color: #cc181e;
     }
 </style>

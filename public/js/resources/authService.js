@@ -77,7 +77,6 @@ tubeApp.service("authService", ["$http", "$q", "sessionService", function($http,
 
         /** islogged in **/
         this.isAuthenticated = function(){
-            console.log("The isAuthenticated code is being called...");
             return sessionService.get('token')? true: false;
         };
 

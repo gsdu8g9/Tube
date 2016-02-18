@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var Post = new Schema({
     username:String,
     parent_comment:String,
+    child_comments:[String],
     vid_id:String,
     avatar_url:String,
     profile_url:String,
