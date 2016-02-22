@@ -1,10 +1,11 @@
 'use strict';
 
 tubeApp
-    .directive("commentEntry", ['$rootScope', 'videoService', 'sessionService', function($rootScope, videoService, sessionService) {
+    .directive("commentEntry", ['$rootScope', '$state','videoService', 'sessionService', function($rootScope, $state, videoService, sessionService) {
         return{
             restrict:'A',
 //            transclude: true,
+//            require: ['^^WatchController'],
             scope: {
                 comment:'=comment'
             },
@@ -13,6 +14,7 @@ tubeApp
 
                 scope.showReply = false;
                 scope.userAvatar = sessionService.get('avatar') || "/img/Avatar_Blank.jpg";
+                scope.user = sessionService.get('username');
 
                 scope.togglelikeComment = function($event){
                     $event.preventDefault();
@@ -25,29 +27,39 @@ tubeApp
                 scope._unsetLikeComment = function(el){
                     el.classList.remove('selected');
                     var data = {
-                        user: sessionService.get('username'),
-                        comment: el.dataset.cid,
+                        user: scope.user,
+                        cid: el.dataset.cid,
                         value: false
                     };
-                    console.log("deselect", data);
-//                    videoService.likeComment(data)
-//                        .then(function(response){
-//
-//                        });
+                    if(scope.user){
+                        videoService.likeComment(data)
+                        .then(function(response){
+                            console.log("deselect", response);
+                            scope.comment.likes = response.likes;
+                        });
+                    }
+                    else {
+                        $state.go('login');
+                    }
                 };
 
                 scope._setLikeComment = function(el){
                     el.classList.add('selected');
                     var data = {
-                        user: sessionService.get('username'),
-                        comment: el.dataset.cid,
+                        user: scope.user,
+                        cid: el.dataset.cid,
                         value: true
                     };
-                    console.log("select", data);
-//                    videoService.likeComment(data)
-//                        .then(function(response){
-//
-//                        });
+                    if(scope.user){
+                        videoService.likeComment(data)
+                            .then(function(response){
+                                console.log("deselect", response);
+                                scope.comment.likes = response.likes;
+                            });
+                    }
+                    else {
+                        $state.go('login');
+                    }
                 };
 
                 scope.toggleDislikeComment = function($event){
@@ -61,29 +73,39 @@ tubeApp
                 scope._unsetDislikeComment = function(el){
                     el.classList.remove('selected');
                     var data = {
-                        user: sessionService.get('username'),
-                        comment: el.dataset.cid,
+                        user: scope.user,
+                        cid: el.dataset.cid,
                         value: false
                     };
-                    console.log("deselect", data);
-//                    videoService.disLikeComment(data)
-//                        .then(function(response){
-//
-//                        });
+                    if(scope.user){
+                        videoService.disLikeComment(data)
+                        .then(function(response){
+                                console.log("deselect", response);
+                                scope.comment.dislikes = response.dislikes;
+                        });
+                    }
+                    else {
+                        $state.go('login');
+                    }
                 };
 
                 scope._setDislikeComment = function(el){
                     el.classList.add('selected');
                     var data = {
-                        user: sessionService.get('username'),
-                        comment: el.dataset.cid,
+                        user: scope.user,
+                        cid: el.dataset.cid,
                         value: true
                     };
-                    console.log("select", data);
-//                    videoService.disLikeComment(data)
-//                        .then(function(response){
-//
-//                        });
+                    if(scope.user){
+                        videoService.disLikeComment(data)
+                        .then(function(response){
+                            console.log("deselect", response);
+                            scope.comment.dislikes = response.dislikes;
+                        });
+                    }
+                    else {
+                        $state.go('login');
+                    }
                 };
 
                 scope.displayReply = function(event){
@@ -92,8 +114,22 @@ tubeApp
                     scope.showReply = true;
                 };
 
-                scope.cancelReply = function(){
+                scope.cancelReply = function(event){
                     scope.showReply = false;
+                };
+
+                scope.replyPost = function(event){
+                    event.preventDefault();
+                    var cid = event.target.dataset.cid;
+                    var text = $(".reply-text[data-cid='" + cid + "']").val();
+                    var data = {
+                        user: sessionService.get('username'),
+                        parent_comment: cid,
+                        comment: text
+                    };
+
+                    console.log("This is the stuff: ", data);
+//                    scope.showReply = false;
                 };
 
                 scope.getSubComments = function(){

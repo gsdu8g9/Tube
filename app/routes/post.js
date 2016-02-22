@@ -125,6 +125,66 @@ router.put("/edit", passport.authenticate("bearer", { session: false }), functio
     });
 });
 
+
+// Update
+// Make a change to meta data for a post
+router.put("/like", passport.authenticate("bearer", { session: false }), function(req, res){
+    Post.findById(req.body.cid, function(err, post){
+        if(err || !post){
+            res.statusCode = 400;
+            res.json({message: "Something went wrong."});
+        }
+
+        if(req.body.value === true){
+            console.log("HIT! adding one");
+            post.likes += 1;
+        }
+        else {
+            console.log("HIT! subtracting one");
+            post.likes -= 1;
+        }
+
+        post.save(function(err, post){
+            if(err){
+                res.statusCode = 400;
+                res.json({message: "Something went wrong."});
+                return;
+            }
+            res.statusCode = 201;
+            res.json(post);
+        });
+    });
+});
+// Update
+// Make a change to meta data for a post
+router.put("/dislike", passport.authenticate("bearer", { session: false }), function(req, res){
+    Post.findById(req.body.cid, function(err, post){
+        if(err || !post){
+            res.statusCode = 400;
+            res.json({message: "Something went wrong."});
+        }
+
+        if(req.body.value === true){
+            console.log("HIT! adding one");
+            post.dislikes += 1;
+        }
+        else {
+            console.log("HIT! subtracting one");
+            post.dislikes -= 1;
+        }
+
+        post.save(function(err, post){
+            if(err){
+                res.statusCode = 400;
+                res.json({message: "Something went wrong."});
+                return;
+            }
+            res.statusCode = 201;
+            res.json(post);
+        });
+    });
+});
+
 // Delete
 // Remove a post from db
 router.post("/delete", passport.authenticate("bearer", { session: false }), function(req, res){

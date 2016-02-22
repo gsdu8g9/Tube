@@ -86,5 +86,37 @@ tubeApp.service("videoService", ['$http',"$q", 'sessionService', function($http,
         return result.promise;
     };
 
+    videoService.likeComment = function(data){
+        var result = $q.defer();
+        $http.put("/post/like", data, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+                result.resolve(response);
+            }).error(function(response){
+                result.reject(response);
+            });
+
+        return result.promise;
+    };
+
+    videoService.disLikeComment = function(data){
+        var result = $q.defer();
+        $http.put("/post/dislike", data, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+                result.resolve(response);
+            }).error(function(response){
+                result.reject(response);
+            });
+
+        return result.promise;
+    };
+
     return videoService;
 }]);
