@@ -1,11 +1,9 @@
 'use strict';
 
 tubeApp
-    .directive("commentEntry", ['$rootScope', '$state','videoService', 'sessionService', function($rootScope, $state, videoService, sessionService) {
+    .directive("commentEntry", ['$rootScope', '$state','videoService', 'sessionService','$compile', function($rootScope, $state, videoService, sessionService, $compile) {
         return{
             restrict:'A',
-//            transclude: true,
-//            require: ['^^WatchController'],
             scope: {
                 comment:'=comment'
             },
@@ -142,9 +140,16 @@ tubeApp
                     var data = {
                         cid: event.target.dataset.cid
                     };
+                    var el = $(".sub-comment-list[data-cid='" + event.target.dataset.cid + "']");
                     videoService.getSubComments(data)
                         .then(function(response){
                             scope.subComments = response;
+                            for(var i = 0; i < scope.subComments.length; i++){
+                                el.append("<li class='vid-comment'>" +
+                                            "<div comment-entry comment='" + JSON.stringify(scope.subComments[i]) + "'></div>" +
+                                          "</li>");
+                            }
+                            $compile(el.contents())(scope);
                         });
                 };
             }

@@ -52,11 +52,6 @@
                     <ul class="commentList">
                         <li class="vid-comment" ng-repeat="comment in activeVidComments">
                             <div comment-entry comment="comment"></div>
-                            <ul ng-if="comment.child_comment.length > 0">
-                                <li>
-                                    <div comment-entry comment="subcomment"></div>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
