@@ -69,6 +69,23 @@ tubeApp.service("videoService", ['$http',"$q", 'sessionService', function($http,
         });
     };
 
+    /** get comments of Posted Video*/
+    videoService.getSubComments = function(data){
+        var result = $q.defer();
+        $http.post('/post/all/sub', data, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+                result.resolve(response);
+            }).error(function(response){
+                result.reject(response);
+            });
+
+        return result.promise;
+    };
+
     videoService.setNewComment = function(comment){
         var result = $q.defer();
 
@@ -82,6 +99,23 @@ tubeApp.service("videoService", ['$http',"$q", 'sessionService', function($http,
         }).error(function(response){
             result.reject(response);
         });
+
+        return result.promise;
+    };
+
+    videoService.replyToComment = function(comment){
+        var result = $q.defer();
+
+        $http.post("/post/reply", comment, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+                result.resolve(response);
+            }).error(function(response){
+                result.reject(response);
+            });
 
         return result.promise;
     };

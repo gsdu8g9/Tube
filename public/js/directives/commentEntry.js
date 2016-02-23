@@ -43,6 +43,10 @@ tubeApp
                     }
                 };
 
+                scope._setTime = function(time){
+                    return moment(time, "YYYYMMDD").fromNow();
+                }
+
                 scope._setLikeComment = function(el){
                     el.classList.add('selected');
                     var data = {
@@ -123,19 +127,24 @@ tubeApp
                     var cid = event.target.dataset.cid;
                     var text = $(".reply-text[data-cid='" + cid + "']").val();
                     var data = {
-                        user: sessionService.get('username'),
                         parent_comment: cid,
                         comment: text
                     };
-
-                    console.log("This is the stuff: ", data);
-//                    scope.showReply = false;
+                    videoService.replyToComment(data)
+                        .then(function(response){
+                            scope.subComments = response;
+                            scope.showReply = false;
+                        });
                 };
 
-                scope.getSubComments = function(){
-                    videoService.getComments($scope.viewVideo)
+                scope.getSubComments = function(event){
+                    event.preventDefault();
+                    var data = {
+                        cid: event.target.dataset.cid
+                    };
+                    videoService.getSubComments(data)
                         .then(function(response){
-                            $scope.activeVidComments = response;
+                            scope.subComments = response;
                         });
                 };
             }

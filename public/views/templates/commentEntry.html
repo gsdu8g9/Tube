@@ -8,7 +8,7 @@
         <a ui-sref="user({username: comment.username})">
             {{comment.username}}
         </a>
-        <span>{{comment.created}}</span>
+        <span>{{_setTime(comment.created)}}</span>
     </div>
     <p>{{comment.comment}}</p>
     <div class="comment-footer">
@@ -33,11 +33,14 @@
                 <button class="btn btn-sm btn-primary" data-cid="{{comment._id}}" ng-click="replyPost($event)">Reply</button>
             </div>
         </div>
+        <!--<pre>{{comment._id}} -- {{comment.child_comments}}</pre>-->
+        <div ng-if="comment.child_comments.length > 0">
+            <a class="comment-link" data-cid="{{comment._id}}" ng-click="getSubComments($event)">
+                View all replies
+            </a>
+        </div>
     </div>
 </div>
-<!--<div style="background-color:#FF0000; height:30px;">-->
-    <!--<div comment-entry comment="subcomment"></div>-->
-<!--</div>-->
 <style>
     .comment-footer {
         margin-left:48px;
@@ -85,6 +88,14 @@
     .reply-gate:hover {
         cursor: pointer;
         color: #cc181e;
+    }
+    .comment-link {
+        margin-top:5px;
+        display:block;
+        text-decoration: none;
+    }
+    .comment-link:hover {
+        text-decoration: none;
     }
     #cancel-reply {
         margin-right:10px;
