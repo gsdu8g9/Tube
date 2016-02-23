@@ -137,20 +137,22 @@ tubeApp
 
                 scope.getSubComments = function(event){
                     event.preventDefault();
-                    var data = {
-                        cid: event.target.dataset.cid
-                    };
-                    var el = $(".sub-comment-list[data-cid='" + event.target.dataset.cid + "']");
-                    videoService.getSubComments(data)
-                        .then(function(response){
-                            scope.subComments = response;
-                            for(var i = 0; i < scope.subComments.length; i++){
-                                el.append("<li class='vid-comment'>" +
-                                            "<div comment-entry comment='" + JSON.stringify(scope.subComments[i]) + "'></div>" +
-                                          "</li>");
-                            }
-                            $compile(el.contents())(scope);
-                        });
+                    if(scope.subComments === undefined || scope.subComments.length === 0){
+                        var data = {
+                            cid: event.target.dataset.cid
+                        };
+                        var el = $(".sub-comment-list[data-cid='" + event.target.dataset.cid + "']");
+                        videoService.getSubComments(data)
+                            .then(function(response){
+                                scope.subComments = response;
+                                for(var i = 0; i < scope.subComments.length; i++){
+                                    el.append("<li class='sub-vid-comment'>" +
+                                                "<div comment-entry comment='" + JSON.stringify(scope.subComments[i]) + "'></div>" +
+                                              "</li>");
+                                }
+                                $compile(el.contents())(scope);
+                            });
+                    }
                 };
             }
         };

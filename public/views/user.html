@@ -59,7 +59,6 @@
         background-color:#e9ecee;
     }
     .chnl-ban-detail {
-        /*height:138px;*/
     }
     .chnl-ban-detail-content {
         padding: 15px 0 0;
@@ -67,7 +66,8 @@
         line-height: 13px;
     }
     .chnl-subheader {
-        
+        position: relative;
+        padding:0px 15px 0px 15px;
     }
     .second-head-nav {
         display: inline;
@@ -90,11 +90,17 @@
         font-weight: 500;
         height: 29px;
         line-height: 29px;
-        /*border-bottom:3px solid #cc181e;*/
         display: inline-block;
     }
     .selected {
         border-bottom:3px solid #cc181e;
+    }
+    .usr-block {
+        height:500px;
+    }
+    .chnl-head {
+        padding:0 15px;
+        height:83px;
     }
 </style>
 <!--end masthead-->
@@ -102,14 +108,14 @@
     <div class="chnl-content col-lg-12 col-md-12">
         <div class="span12 chnl-banner" >
             <div class="chnl-head-profile-img-container">
-                <img class="chnl-head-profile-img" src="/img/test_Fozzie.jpg"/>
+                <img class="chnl-head-profile-img" src="{{userAvatar}}"/>
             </div>
         </div>
         <div class="span12 chnl-ban-detail">
             <div class="span12 chnl-ban-detail-content">
-                <div class="span12" style="padding:0 15px; height:83px;">
-                    <h2 style="float:left;">Shane White</h2>
-                    <div class="btn-group btn-group-xs" style="float:right;">
+                <div class="chnl-head span12">
+                    <h2  class="pull-left">{{user}}</h2>
+                    <div class="btn-group btn-group-xs pull-right">
                         <button type="button" class="btn btn-default">
                             <i class="glyphicon glyphicon-ok fa-lg"></i>
                             Subscribers
@@ -122,7 +128,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="span12 chnl-subheader" style="position: relative; padding:0px 15px 0px 15px;">
+                <div class="span12 chnl-subheader">
                     <ul class="second-head-nav">
                         <li><span ng-click="goTo($event, 'user.home')">Home</span></li>
                         <li><span ng-click="goTo($event, 'user.video')">Video</span></li>
@@ -136,10 +142,9 @@
         </div>
     </div>
 
-    <div class="usr-content col-lg-12 col-md-12" style="height: 500px;">
+    <div class="usr-content usr-block col-lg-12 col-md-12">
         <div ui-view></div>
     </div>
-
 
     </div>
 <!-- GLOBAL NAV -->
