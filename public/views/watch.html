@@ -2,11 +2,89 @@
 <div data-ng-controller="MastheadController">
     <div ng-include="" src="'views/masthead.html'"></div>
 </div>
+
+<style>
+    .vid-details-header {
+        margin-top:0px;
+        margin-bottom:0px;
+        font-size: 24px;
+        color:#222;
+    }
+    .action-ctr {
+        border-top:1px solid #cccccc;
+        padding-top:10px;
+        margin-top:10px;
+        height:30px;
+    }
+    .action-list {
+        list-style: none;
+        text-decoration: none;
+        display: inline-block;
+        margin:0px;
+        padding:0px;
+    }
+    .vid-details-block {
+        height: 65px;
+        padding:10px 0px;
+    }
+    .vid-details-owner {
+        position:relative;
+        top:0px;
+        display: block;
+        margin-bottom:8px;
+    }
+    .vid-details-owner span {
+        font-size:14px;
+    }
+    .vid-details-views-ctr {
+        width:160px;
+        text-align:right;
+        margin-top:28px;
+    }
+    .display-views {
+        font-size: 20px;
+        width:160px;
+        text-align:right;
+    }
+    .strt-new-comment {
+        width:655px;
+        height:50px;
+        float:left;
+    }
+    .vid-comments-box img {
+        float:left;
+        margin-right:20px;
+        width:50px;
+    }
+    .vid-comment-show {
+        margin-bottom:20px;
+        height:50px;
+    }
+    .thumb-nail img {
+        width:120px;
+        height:68px
+    }
+    .vid-container {
+        background:#000000;
+        height:360px;
+        width:750px;
+    }
+    .page-content {
+        margin-bottom:60px !important;
+    }
+    .page-container {
+        height:100% !important;
+        margin-top:120px;
+    }
+    .mr-left{
+        margin-left:5px;
+    }
+</style>
 <!--end masthead-->
-<div style="height:100% !important; margin-top:120px;" class="container">
-    <div class="row" style="margin-bottom:60px !important;">
+<div  class="container page-container">
+    <div class="row page-content">
         <div class="col-lg-8">
-            <div style="background:#000000; height:360px; width:750px;">
+            <div class="vid-container">
                 <video id="example_video_1" class="video-js vjs-default-skin"
                        controls preload="auto" width="750px" height="360px"
                        poster="{{activeVid.thumbnail_url}}"
@@ -14,23 +92,48 @@
                     <source src="" type='video/mp4' />
                 </video>
             </div>
-            <div class="span12 vid-details-box">
-                <h1 style="margin-top:0px; font-size: 24px;color:#222;">{{activeVid.name}}</h1>
-                <div class="pull-left">
-                    <a ui-sref="user({username:activeVid.profile_url})">
-                        <img width="50" src="{{activeVid.userPic}}" />
-                    </a>
-                    <div class="pull-right" style="margin-left:5px;">
-                        <a style="position:relative; top:0px; display: block; margin-bottom:2px;" ui-sref="user({username:activeVid.profile_url})">
-                            <span>{{activeVid.owner}}</span>
+            <div class="vid-details-box">
+                <h1 class="vid-details-header">{{activeVid.name}}</h1>
+                <div class="vid-details-block">
+                    <div class="pull-left">
+                        <a ui-sref="user({username:activeVid.profile_url})">
+                            <img width="50" src="{{activeVid.userPic}}" />
                         </a>
-                        <button class="btn btn-sm btn-danger">Subscribe</button>
+                        <div class="pull-right mr-left">
+                            <a class="vid-details-owner" ui-sref="user({username:activeVid.profile_url})">
+                                <span>{{activeVid.owner}}</span>
+                            </a>
+                            <div class="btn-group btn-group-xs pull-right">
+                                <button type="button" class="btn btn-default btn-danger">
+                                    <i class="glyphicon glyphicon-ok fa-lg"></i>
+                                    Subscribers
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <i class="glyphicon glyphicon-cog fa-lg"></i>
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    1000000
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right vid-details-views-ctr">
+                        <span class="display-views">{{activeVid.views}}</span>
                     </div>
                 </div>
-                <div class="pull-right" style="max-width:200px;">
-                    <span class="display-views">{{activeVid.views}}</span>
-                    <hr/>
-                    <ul class="rating-list">
+                <div class="action-ctr">
+                    <ul class="action-list pull-left">
+                        <li class="ratings bad-rating">
+                            <span class="glyphicon glyphicon-plus" ng-click="togglelikeVideo()"></span>Add to
+                        </li>
+                        <li class="ratings bad-rating">
+                            <span class="glyphicon glyphicon-share-alt" ng-click="toggleDislikeVideo()"></span>Share
+                        </li>
+                        <li class="ratings bad-rating">
+                            <span class="glyphicon glyphicon-option-horizontal" ng-click="toggleDislikeVideo()"></span>More
+                        </li>
+                    </ul>
+                    <ul class="rating-list pull-right">
                         <li class="ratings good-rating">
                             <span class="glyphicon glyphicon-thumbs-up" ng-click="togglelikeVideo()"></span>{{activeVid.likes}}
                         </li>
@@ -42,10 +145,10 @@
             </div>
             <div class="vid-comments-box">
                 <h4>All Comments ({{activeVidComments.length}})</h4>
-                <div style="margin-bottom: 20px; height:50px;">
-                    <img width="50" src="{{userAvatar}}" style="float:left; margin-right:20px;" />
+                <div class="vid-comment-show">
+                    <img src="{{userAvatar}}" />
                     <form method="post" action="setNewComment()">
-                        <textarea class="strt-new-comment" style="width:655px; height:50px;float:left;" />
+                        <textarea class="strt-new-comment" />
                     </form>
                 </div>
                 <div class="actionBox">
@@ -69,7 +172,7 @@
                     </div>
                     <a href="#/watch?vid={{item.id}}">
                         <div class="thumb-nail">
-                            <img style="width:120px;height:68px" src="{{item.thumbnail_url}}"/>
+                            <img src="{{item.thumbnail_url}}"/>
                             <span class="vid-time">{{item.vid_time}}</span>
                         </div>
                     </a>
