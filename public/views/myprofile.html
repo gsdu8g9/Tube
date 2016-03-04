@@ -3,8 +3,83 @@
     <div ng-include="" src="'views/masthead.html'"></div>
 </div>
 <!--end masthead-->
+<style>
+    .side-list li {
+        margin-left: 0px;
+        line-height: 24px;
+        font-size: 11px;
+        padding: 0px;
+        border:0px;
+    }
+    .side-list a {
+        padding: 0 21px;
+        display: block;
+        line-height: 24px;
+        font-size: 11px;
+        color:#444444;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .selected {
+        background-color: #cc181e;
+    }
+    .selected a {
+        color: #FFFFFF;
+    }
+    h3 {
+        padding:0 21px;
+        font-weight: 500;
+        font-size: 11px;
+        color:#444444;
+    }
+    .side-list {
+        list-style: none;
+        margin-left: 0px;
+        margin-bottom:10px;
+        padding:0px;
+        line-height: 24px;
+    }
+    .profile-content {
+        background-color: #FFFFFF;
+        height: 615px;
+    }
+    .account-header {
+        margin:0px;
+        border-bottom: solid 1px #e2e2e2;
+    }
+    .account-header h1 {
+        display: block;
+        color: #333333;
+        font-size: 18px;
+        font-weight:500;
+    }
+</style>
 <div style="height:900px; margin-top:120px;" class="container">
-
+    <div class="col-lg-3 col-md-3">
+        <div class="col-lg-12" style="background-color: #FFFFFF; margin-bottom: 15px;">
+            <h3>ACCOUNT SETTINGS</h3>
+            <ul class="side-list">
+                <li>
+                    <a  ng-click="goTo($event, 'myprofile.overview')">Overview</a>
+                </li>
+                <li>
+                    <a ng-click="goTo($event, 'myprofile.privacy')">Privacy</a>
+                </li>
+                <li>
+                    <a ng-click="goTo($event, 'myprofile.notification')">Notifications</a>
+                </li>
+                <li>
+                    <a ng-click="goTo($event, 'myprofile.playback')">Playback</a>
+                </li>
+                <li>
+                    <a ng-click="goTo($event, 'myprofile.connected')">Connected TVs</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="profile-content col-lg-9 col-md-9">
+        <div ui-view></div>
+    </div>
 </div>
 <!-- GLOBAL NAV -->
 <div data-ng-controller="FooterController">

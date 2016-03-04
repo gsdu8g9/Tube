@@ -44,7 +44,8 @@ router.post("/login", function(req, res) {
 					tempUser = {
 						displayName : user.displayName,
 						username : user.username,
-						token : tokenValue
+						token : tokenValue,
+                        avatar_url :user.avatar_url
 					};
 
 					res.json(tempUser);
@@ -144,7 +145,8 @@ router.post("/register", function(req, res) {
 	console.log(util.inspect(req.body));
 	var user = new User({
 		username : req.body.username,
-		displayName : req.body.firstname + " " + req.body.lastname,
+        avatar_url: req.body.avatar_url || "/img/Avatar_Blank.jpg",
+        displayName : req.body.firstname + " " + req.body.lastname,
 		gender : req.body.gender,
 		birthday : req.body.birthday || new Date(),
 		email : req.body.email,

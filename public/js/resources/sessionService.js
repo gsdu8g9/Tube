@@ -32,6 +32,7 @@ tubeApp.service("sessionService", function(){
             setUserData:function(user){
                 sessionStorage.setItem("token", user.token);
                 sessionStorage.setItem("username", user.username);
+                sessionStorage.setItem("avatar",user.avatar_url);
 
                 if(user.isAdmin) {
                     sessionStorage.setItem("isAdmin", "true");

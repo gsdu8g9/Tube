@@ -581,7 +581,6 @@ tubeApp
                 console.log("There are still errors in the form.");
             }
             else {
-                console.log("This user is being created.....");
               authService.register($scope.registerForm)
                   .then(function(response){
                       sessionService.setUserData(response)

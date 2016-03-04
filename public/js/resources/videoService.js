@@ -1,8 +1,17 @@
 'use strict';
 
-tubeApp.service("videoService", ['$http', 'sessionService', function($http, sessionService){
+tubeApp.service("videoService", ['$http',"$q", 'sessionService', function($http, $q, sessionService){
 
     var videoService = {};
+
+    var transformData = function(obj){
+        var str = [];
+
+        for(var p in obj){
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        }
+        return str.join("&");
+    };
 
     /** Get users Posted Videos **/
     videoService.getVideos = function(){
@@ -54,13 +63,93 @@ tubeApp.service("videoService", ['$http', 'sessionService', function($http, sess
     videoService.getComments = function(id){
         return $http({
             method:'GET',
-            url: '../stub/commentSample.json'
+            url: '/post/all/' + id
         }).then(function(response){
-            var comments = response.data.filter(function(comment){
-                return comment.vid_id === id;
-            })
-            return comments;
+            return response.data;
         });
+    };
+
+    /** get comments of Posted Video*/
+    videoService.getSubComments = function(data){
+        var result = $q.defer();
+        $http.post('/post/all/sub', data, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+                result.resolve(response);
+            }).error(function(response){
+                result.reject(response);
+            });
+
+        return result.promise;
+    };
+
+    videoService.setNewComment = function(comment){
+        var result = $q.defer();
+
+        $http.post("/post/add", comment, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+            result.resolve(response);
+        }).error(function(response){
+            result.reject(response);
+        });
+
+        return result.promise;
+    };
+
+    videoService.replyToComment = function(comment){
+        var result = $q.defer();
+
+        $http.post("/post/reply", comment, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+                result.resolve(response);
+            }).error(function(response){
+                result.reject(response);
+            });
+
+        return result.promise;
+    };
+
+    videoService.likeComment = function(data){
+        var result = $q.defer();
+        $http.put("/post/like", data, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+                result.resolve(response);
+            }).error(function(response){
+                result.reject(response);
+            });
+
+        return result.promise;
+    };
+
+    videoService.disLikeComment = function(data){
+        var result = $q.defer();
+        $http.put("/post/dislike", data, {
+            headers:{
+                "Authorization": "Bearer " + sessionService.getToken(),
+                "Content-Type": "application/json"
+            }
+        }).success(function(response){
+                result.resolve(response);
+            }).error(function(response){
+                result.reject(response);
+            });
+
+        return result.promise;
     };
 
     return videoService;

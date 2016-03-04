@@ -33,7 +33,7 @@
                 </li>
                 <li ng-if="isLoggedIn()">
                     <a popover-title="Test" popover-placement="bottom" popover-html="And here's some content." user-options-pop-directive>
-                        <img width="20" src="/img/test_Fozzie.jpg" />
+                        <img width="20" src="{{userAvatar}}" />
                     </a>
                 </li>
             </ul>
@@ -48,7 +48,7 @@
                                     <a class="list-group-item" ui-sref="home"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
                                 </li>
                                 <li>
-                                    <a class="list-group-item" ui-sref="myprofile"><i class="fa fa-user fa-fw"></i>&nbsp; My Channel</a>
+                                    <a class="list-group-item" ui-sref="channel"><i class="fa fa-user fa-fw"></i>&nbsp; My Channel</a>
                                 </li>
                                 <li>
                                     <a class="list-group-item" ui-sref="history"><i class="glyphicon glyphicon-hourglass fa-fw"></i>&nbsp; History</a>
