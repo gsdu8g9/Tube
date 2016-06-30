@@ -89,7 +89,7 @@
                        controls preload="auto" width="750px" height="360px"
                        poster="{{activeVid.thumbnail_url}}"
                        data-setup='{"controls":true}'>
-                    <source src="" type='video/mp4' />
+                    <source ng-src="" type='video/mp4' />
                 </video>
             </div>
             <div class="vid-details-box">
@@ -97,7 +97,7 @@
                 <div class="vid-details-block">
                     <div class="pull-left">
                         <a ui-sref="user({username:activeVid.profile_url})">
-                            <img width="50" src="{{activeVid.userPic}}" />
+                            <img width="50" ng-src="{{activeVid.userPic}}" />
                         </a>
                         <div class="pull-right mr-left">
                             <a class="vid-details-owner" ui-sref="user({username:activeVid.profile_url})">
@@ -146,7 +146,7 @@
             <div class="vid-comments-box">
                 <h4>All Comments ({{activeVidComments.length}})</h4>
                 <div class="vid-comment-show">
-                    <img src="{{userAvatar}}" />
+                    <img ng-src="{{userAvatar}}" />
                     <form method="post" action="setNewComment()">
                         <textarea class="strt-new-comment" />
                     </form>
@@ -172,7 +172,7 @@
                     </div>
                     <a href="#/watch?vid={{item.id}}">
                         <div class="thumb-nail">
-                            <img src="{{item.thumbnail_url}}"/>
+                            <img ng-src="{{item.thumbnail_url}}"/>
                             <span class="vid-time">{{item.vid_time}}</span>
                         </div>
                     </a>

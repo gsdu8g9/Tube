@@ -1,6 +1,6 @@
 <div class="commenterImage">
     <a ui-sref="user({username: comment.username})">
-        <img src="{{comment.avatar_url}}" />
+        <img ng-src="{{comment.avatar_url}}" />
     </a>
 </div>
 <div class="commentText">
@@ -25,7 +25,7 @@
         </div>
         <div class="reply-box" ng-show="showReply">
             <div style="min-height:50px;">
-                <img src="{{userAvatar}}"/>
+                <img ng-src="{{userAvatar}}"/>
                 <textarea class="reply-text" data-cid="{{comment._id}}" />
             </div>
             <div class="reply-btns">

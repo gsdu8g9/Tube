@@ -71,14 +71,14 @@
         </div>
         <div class="span12 chnl-banner" >
             <div class="chnl-head-profile-img-container">
-                <img class="chnl-head-profile-img" src="/img/test_Fozzie.jpg"/>
+                <img class="chnl-head-profile-img" ng-src="/img/test_Fozzie.jpg"/>
             </div>
         </div>
         <div class="span12 chnl-ban-detail">
             <div class="span12 chnl-ban-detail-content">
                 <div class="span12" style="padding:0 15px; height:55px;">
                     <h1 style="float:left;">Shane White</h1>
-                    <a style="float:right;" ui-sref="">
+                    <a style="float:right;">
                         <i class="glyphicon glyphicon-cog fa-lg"></i>
                     </a>
                 </div>
@@ -99,7 +99,7 @@
                 <li class="home-video-list-item" data-ng-repeat="item in vidList">
                     <div class="place-thumbnail">
                         <a href="#/watch?vid={{item.id}}">
-                            <img class="top-thumb-nail" src="{{item.thumbnail_url}}"/>
+                            <img class="top-thumb-nail" ng-src="{{item.thumbnail_url}}"/>
                             <span class="vid-time">{{item.vid_time}}</span>
                         </a>
                     </div>
@@ -119,7 +119,7 @@
                 <li class="home-video-list-item" data-ng-repeat="item in vidList">
                     <div class="place-thumbnail">
                         <a href="#/watch?vid={{item.id}}">
-                            <img class="top-thumb-nail" src="{{item.thumbnail_url}}"/>
+                            <img class="top-thumb-nail" ng-src="{{item.thumbnail_url}}"/>
                             <span class="vid-time">{{item.vid_time}}</span>
                         </a>
                     </div>
@@ -139,7 +139,7 @@
                 <li class="home-video-list-item" data-ng-repeat="item in vidList">
                     <div class="place-thumbnail">
                         <a href="#/watch?vid={{item.id}}">
-                            <img class="top-thumb-nail" src="{{item.thumbnail_url}}"/>
+                            <img class="top-thumb-nail" ng-src="{{item.thumbnail_url}}"/>
                             <span class="vid-time">{{item.vid_time}}</span>
                         </a>
                     </div>

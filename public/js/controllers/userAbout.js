@@ -6,9 +6,7 @@ tubeApp
         $scope.user = $stateParams.username;
 
         $scope.init = function(){
-            console.log("going in" + $scope.user);
             if($scope.user){
-                console.log("This is the user: " + $scope.user);
             }
             else{
                 $state.go('home');

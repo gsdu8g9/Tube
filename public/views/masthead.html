@@ -33,7 +33,7 @@
                 </li>
                 <li ng-if="isLoggedIn()">
                     <a popover-title="Test" popover-placement="bottom" popover-html="And here's some content." user-options-pop-directive>
-                        <img width="20" src="{{userAvatar}}" />
+                        <img width="20" ng-src="{{userAvatar}}" />
                     </a>
                 </li>
             </ul>
