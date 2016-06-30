@@ -7,6 +7,11 @@ var tubeApp = angular.module('tubeApp', ['ui.router'])
             templateUrl: '/views/home.html',
             controller: 'HomeController'
         })
+        .state('about', {
+            url:'/about',
+            templateUrl: '/views/about.html',
+            controller: 'AboutController'
+        })
         .state('history', {
             url:'/history',
             templateUrl: '/views/history.html',
