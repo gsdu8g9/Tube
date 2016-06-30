@@ -8,7 +8,6 @@ tubeApp
         $scope.userAvatar = sessionService.get('avatar') || "/img/Avatar_Blank.jpg";
 
         $scope.isLoggedIn= function(){
-            console.log("This is a Hit...");
             return authService.isAuthenticated();
         };
 
@@ -19,9 +18,4 @@ tubeApp
         $scope.showUserOptions = function(){
 
         };
-
-//        $scope.init = function(){
-//
-//        };
-//        $scope.init();
     }]);
